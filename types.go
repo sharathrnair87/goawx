@@ -246,6 +246,14 @@ type Credential struct {
 	Name             string `json:"name"`
 }
 
+type CredentialType struct {
+	ID     int         `json:"ID"`
+	Type   string      `json":type"`
+	Name   string      `json:"name"`
+	Kind   string      `json:"kind"`
+	Inputs interface{} `json:"inputs"`
+}
+
 // UnifiedJobTemplate represents the awx api unified job template.
 type UnifiedJobTemplate struct {
 	ID             int    `json:"id"`

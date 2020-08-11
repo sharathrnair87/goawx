@@ -1,19 +1,13 @@
 # awx-go
 
-[![Build Status](https://travis-ci.org/Colstuwjx/awx-go.svg?branch=master)](https://travis-ci.org/Colstuwjx/awx-go)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Colstuwjx/awx-go)](https://goreportcard.com/report/github.com/Colstuwjx/awx-go)
-[![codecov](https://codecov.io/gh/Colstuwjx/awx-go/branch/master/graph/badge.svg)](https://codecov.io/gh/Colstuwjx/awx-go)
+AWX (Ansible Tower) SDK for the Go programming language.
 
-AWX SDK for the Go programming language.
-
-![AWX-GO-ROBOT](images/awx-go-robot.png)
+This SDK has been developed against AWX 14.0.0.
 
 ## Installing
 
-If you are using Go 1.5 with the GO15VENDOREXPERIMENT=1 vendoring flag, or 1.6 and higher you can use the following command to retrieve the SDK. The SDK will be included.
-
 ```
-go get -u github.com/Colstuwjx/awx-go
+go get -u github.com/mrcrilly/goawx
 ```
 
 ## Example

@@ -9,7 +9,7 @@ import (
 )
 
 // This variable is mandatory and to be populated for creating services API
-var mandatoryFields = []string{}
+var mandatoryFields []string
 
 // AWX represents awx api endpoints with services, and using
 // client to communicate with awx server.
@@ -25,6 +25,7 @@ type AWX struct {
 	UserService           *UserService
 	GroupService          *GroupService
 	HostService           *HostService
+	CredentialsService    *CredentialsService
 }
 
 // Client implement http client.
@@ -104,6 +105,9 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) *AWX {
 			client: awxClient,
 		},
 		HostService: &HostService{
+			client: awxClient,
+		},
+		CredentialsService: &CredentialsService{
 			client: awxClient,
 		},
 	}
