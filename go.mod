@@ -1,4 +1,4 @@
-module github.com/mrcrilly/awx-go
+module github.com/mrcrilly/goawx
 
 go 1.14
 
