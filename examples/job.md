@@ -10,7 +10,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     var (
         yourJobId = 301
     )
@@ -27,13 +27,13 @@ fun main() {
 
 > Cancel Job
 
-```
+```go
 import (
     "log"
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     var (
         yourJobId = 301
     )
@@ -56,7 +56,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     var (
         yourJobId = 301
     )
@@ -79,7 +79,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     var (
         yourJobId = 301
     )
@@ -96,13 +96,13 @@ fun main() {
 
 > Get Job Events
 
-```
+```go
 import (
     "log"
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     var (
         yourJobId = 301
     )

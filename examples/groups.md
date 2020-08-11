@@ -35,7 +35,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
     result, err := awx.GroupService.CreateGroup(map[string]interface{}{
        "name":     "test",
@@ -60,7 +60,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
     result, err := awx.GroupService.UpdateGroup(21, map[string]interface{}{
         "description": "Add description here",
@@ -84,7 +84,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
     result, err := awx.GroupService.DeleteGroup(12)
 

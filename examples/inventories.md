@@ -31,7 +31,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
     result, err := awx.InventoriesService.CreateInventory(map[string]interface{}{
        "name":         "TestInventory",
@@ -58,7 +58,7 @@ import (
     awxGo "github.com/Colstuwjx/awx-go"
 )
 
-fun main() {
+func main() {
     awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
     result, err := awx.InventoriesService.UpdateInventory(1, map[string]interface{}{
        "name":         "TestInventory - 1",
