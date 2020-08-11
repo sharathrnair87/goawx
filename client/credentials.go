@@ -53,12 +53,6 @@ func (cs *CredentialsService) ListCredentialsTypes(params map[string]string) ([]
 }
 
 func (cs *CredentialsService) CreateCredentials(data map[string]interface{}, params map[string]string) (*Credential, error) {
-	//mandatoryFields = []string{"name", "user", "password", "kind"}
-	//validate, status := ValidateParams(data, mandatoryFields)
-	//if !status {
-	//	return nil, fmt.Errorf("Mandatory input arguments are absent: %s", validate)
-	//}
-
 	result := new(Credential)
 	endpoint := "/api/v2/credentials/"
 	payload, err := json.Marshal(data)
