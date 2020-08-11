@@ -3,9 +3,6 @@ package awx
 import (
 	"fmt"
 	"net/http"
-	"testing"
-
-	"github.com/kylelemons/godebug/pretty"
 )
 
 // This variable is mandatory and to be populated for creating services API
@@ -41,13 +38,6 @@ func CheckResponse(resp *http.Response) error {
 	}
 
 	return fmt.Errorf("responsed with %d, resp: %v", resp.StatusCode, resp)
-}
-
-// CheckAPICallResult compare API calls results
-func checkAPICallResult(t *testing.T, expected interface{}, got interface{}) {
-	if diff := pretty.Compare(expected, got); diff != "" {
-		t.Fatalf("diff: (-got +want)\n%s", diff)
-	}
 }
 
 // ValidateParams is to validate the input to use the services.
