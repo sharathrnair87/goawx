@@ -17,11 +17,12 @@ type ListProjectsResponse struct {
 	Results []*Project `json:"results"`
 }
 
+const projectsAPIEndpoint = "/api/v2/projects/"
+
 // ListProjects shows list of awx projects.
 func (p *ProjectService) ListProjects(params map[string]string) ([]*Project, *ListProjectsResponse, error) {
 	result := new(ListProjectsResponse)
-	endpoint := "/api/v2/projects/"
-	resp, err := p.client.Requester.GetJSON(endpoint, result, params)
+	resp, err := p.client.Requester.GetJSON(projectsAPIEndpoint, result, params)
 	if err != nil {
 		return nil, result, err
 	}
@@ -44,7 +45,6 @@ func (p *ProjectService) CreateProject(data map[string]interface{}, params map[s
 	}
 
 	result := new(Project)
-	endpoint := "/api/v2/projects/"
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func (p *ProjectService) CreateProject(data map[string]interface{}, params map[s
 
 	// Add check if project exists and return proper error
 
-	resp, err := p.client.Requester.PostJSON(endpoint, bytes.NewReader(payload), result, params)
+	resp, err := p.client.Requester.PostJSON(projectsAPIEndpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func (p *ProjectService) CreateProject(data map[string]interface{}, params map[s
 // UpdateProject update an awx Project.
 func (p *ProjectService) UpdateProject(id int, data map[string]interface{}, params map[string]string) (*Project, error) {
 	result := new(Project)
-	endpoint := fmt.Sprintf("/api/v2/projects/%d", id)
+	endpoint := fmt.Sprintf("%s%d", projectsAPIEndpoint, id)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -87,7 +87,7 @@ func (p *ProjectService) UpdateProject(id int, data map[string]interface{}, para
 // DeleteProject delete an awx Project.
 func (p *ProjectService) DeleteProject(id int) (*Project, error) {
 	result := new(Project)
-	endpoint := fmt.Sprintf("/api/v2/projects/%d", id)
+	endpoint := fmt.Sprintf("%s%d", projectsAPIEndpoint, id)
 
 	resp, err := p.client.Requester.Delete(endpoint, result, nil)
 	if err != nil {

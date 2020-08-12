@@ -105,7 +105,3 @@ func TestCredentialsService(t *testing.T) {
 		})
 	}
 }
-
-func TestCredentialsService_DeleteCredentialByID(t *testing.T) {
-
-}

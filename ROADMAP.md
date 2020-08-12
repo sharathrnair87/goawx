@@ -4,6 +4,13 @@
 - [x] A better way to handle response and serialize;
 - [x] Mock and automation tests;
 - [x] Support Ping endpoints;
+- [x] Support Users endpoints;
+- [x] Support Projects endpoints;
+- [x] Support ProjectUpdates endpoints;
+- [x] Support Credentials endpoints;
+- [x] Support Groups endpoints;
+- [x] Support Hosts endpoints;
+- [x] Support JobTemplates endpoints;
 - [ ] Support Instances endpoints;
 - [ ] Support InstanceGroups endpoints;
 - [ ] Support Config endpoints;
@@ -11,11 +18,7 @@
 - [ ] Support Me endpoints;
 - [ ] Support Dashboard endpoints;
 - [ ] Support Orgnizations endpoints;
-- [x] Support Users endpoints;
-- [x] Support Projects endpoints;
-- [x] Support ProjectUpdates endpoints;
 - [ ] Support Teams endpoints;
-- [ ] Support Credentials endpoints;
 - [ ] Support CredentialTypes endpoints;
 - [ ] Support Applications endpoints;
 - [ ] Support Tokens endpoints;
@@ -23,9 +26,6 @@
 - [ ] Support InventoryScripts endpoints;
 - [ ] Support InventorySources endpoints;
 - [ ] Support InventoryUpdates endpoints;
-- [x] Support Groups endpoints;
-- [x] Support Hosts endpoints;
-- [x] Support JobTemplates endpoints;
 - [ ] Support Jobs endpoints(**partial**);
 - [ ] Support JobEvents endpoints(**partial**);
 - [ ] Support AdHocCommands endpoints;

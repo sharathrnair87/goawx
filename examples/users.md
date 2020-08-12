@@ -1,89 +1,59 @@
 # User API
 
+Please refer to `client.md` before reviewing these examples.
+
 ## Usage
 
 > List Users
 
 ```go
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
-
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    result, _, err := awx.UserService.ListUsers(map[string]string{
-        "name": "Demo User",
-    })
-    if err != nil {
-        log.Fatalf("List Users err: %s", err)
-    }
-
-    log.Println("List User: ", result)
+result, _, err := client.UserService.ListUsers(map[string]string{
+    "name": "Demo User",
+})
+if err != nil {
+    log.Fatalf("List Users err: %s", err)
 }
+
+log.Println("List User: ", result)
 ```
 
 > Create User
 
 ```go
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
+result, err := client.UserService.CreateUser(map[string]interface{}{
+   "username":     "test",
+   "description":  "for testing CreateUser api",
+}, map[string]string{})
 
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    result, err := awx.UserService.CreateUser(map[string]interface{}{
-       "username":     "test",
-       "description":  "for testing CreateUser api",
-    }, map[string]string{})
-
-    if err != nil {
-        log.Fatalf("Create User err: %s", err)
-    }
-
-    log.Printf("User created. Username: %s", result.User.Username)
+if err != nil {
+    log.Fatalf("Create User err: %s", err)
 }
+
+log.Printf("User created. Username: %s", result.User.Username)
 ```
 
 > Update User
 
 ```go
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
+result, err := client.UserService.UpdateUser(1, map[string]interface{}{
+   "description":  "for testing Update api",
+}, map[string]string{})
 
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    result, err := awx.UserService.UpdateUser(1, map[string]interface{}{
-       "description":  "for testing Update api",
-    }, map[string]string{})
-
-    if err != nil {
-        log.Fatalf("Update User err: %s", err)
-    }
-
-    log.Printf("Update finised. Description: %s", result.User.Description)
+if err != nil {
+    log.Fatalf("Update User err: %s", err)
 }
+
+log.Printf("Update finised. Description: %s", result.User.Description)
 ```
 
 > Delete User
 
 ```go
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
+result, err := client.UserService.DeleteUser(1)
 
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    result, err := awx.UserService.DeleteUser(1)
-
-    if err != nil {
-        log.Fatalf("Delete user err: %s", err)
-    }
-
-    log.Printf("User Deleted")
+if err != nil {
+    log.Fatalf("Delete user err: %s", err)
 }
+
+log.Printf("User Deleted")
 ```

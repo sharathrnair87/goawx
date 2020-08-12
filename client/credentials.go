@@ -12,7 +12,7 @@ type CredentialsService struct {
 
 type ListCredentialsResponse struct {
 	Pagination
-	Results []*Credential `json:"results"'`
+	Results []*Credential `json:"results"`
 }
 
 const credentialsAPIEndpoint = "/api/v2/credentials/"

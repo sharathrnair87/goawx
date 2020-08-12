@@ -17,11 +17,12 @@ type ListGroupsResponse struct {
 	Results []*Group `json:"results"`
 }
 
+const groupsAPIEndpoint = "/api/v2/groups/"
+
 // ListGroups shows list of awx Groups.
 func (g *GroupService) ListGroups(params map[string]string) ([]*Group, *ListGroupsResponse, error) {
 	result := new(ListGroupsResponse)
-	endpoint := "/api/v2/groups/"
-	resp, err := g.client.Requester.GetJSON(endpoint, result, params)
+	resp, err := g.client.Requester.GetJSON(groupsAPIEndpoint, result, params)
 	if err != nil {
 		return nil, result, err
 	}
@@ -44,7 +45,6 @@ func (g *GroupService) CreateGroup(data map[string]interface{}, params map[strin
 	}
 
 	result := new(Group)
-	endpoint := "/api/v2/groups/"
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func (g *GroupService) CreateGroup(data map[string]interface{}, params map[strin
 
 	// Add check if Group exists and return proper error
 
-	resp, err := g.client.Requester.PostJSON(endpoint, bytes.NewReader(payload), result, params)
+	resp, err := g.client.Requester.PostJSON(groupsAPIEndpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func (g *GroupService) CreateGroup(data map[string]interface{}, params map[strin
 // UpdateGroup update an awx group
 func (g *GroupService) UpdateGroup(id int, data map[string]interface{}, params map[string]string) (*Group, error) {
 	result := new(Group)
-	endpoint := fmt.Sprintf("/api/v2/groups/%d", id)
+	endpoint := fmt.Sprintf("%s%d", groupsAPIEndpoint, id)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -87,7 +87,7 @@ func (g *GroupService) UpdateGroup(id int, data map[string]interface{}, params m
 // DeleteGroup delete an awx Group.
 func (g *GroupService) DeleteGroup(id int) (*Group, error) {
 	result := new(Group)
-	endpoint := fmt.Sprintf("/api/v2/groups/%d", id)
+	endpoint := fmt.Sprintf("%s%d", groupsAPIEndpoint, id)
 
 	resp, err := g.client.Requester.Delete(endpoint, result, nil)
 	if err != nil {

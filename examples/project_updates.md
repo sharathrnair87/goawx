@@ -1,45 +1,29 @@
 # Project API
 
+Please refer to `client.md` before reviewing these examples.
+
 ## Usage
 
 > Project Updates Cancel
 
 ```go
-package main
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
+err := client.ProjectUpdatesService.ProjectUpdateCancel(4)
 
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    err := awx.ProjectUpdatesService.ProjectUpdateCancel(4)
-
-    if err != nil {
-        log.Fatalf("Cancel Update Projects err: %s", err)
-    }
-
-    log.Printf("Update Project cancelled.")
+if err != nil {
+    log.Fatalf("Cancel Update Projects err: %s", err)
 }
+
+log.Printf("Update Project cancelled.")
 ```
 
 > Project Updates Get Update
 
 ```go
-package main
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
+err := client.ProjectUpdatesService.ProjectUpdateGet(4)
 
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    err := awx.ProjectUpdatesService.ProjectUpdateGet(4)
-
-    if err != nil {
-        log.Fatalf("Get Update Projects err: %s", err)
-    }
-
-    log.Printf("Get Project done.")
+if err != nil {
+    log.Fatalf("Get Update Projects err: %s", err)
 }
+
+log.Printf("Get Project done.")
 ```
