@@ -85,7 +85,7 @@ func TestCredentialsService(t *testing.T) {
 		t.Run("Update", func(t *testing.T) {
 			tt.data["name"] = "credential_x"
 
-			updateResponse, err := awxClient.CredentialsService.UpdateCredentialByID(createResponse.ID, tt.data,
+			updateResponse, err := awxClient.CredentialsService.UpdateCredentialsByID(createResponse.ID, tt.data,
 				map[string]string{})
 			if err != nil {
 				t.Error(err)
