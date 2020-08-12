@@ -18,11 +18,12 @@ type ListJobTemplatesResponse struct {
 	Results []*JobTemplate `json:"results"`
 }
 
+const jobTemplateAPIEndpoint = "/api/v2/job_templates/"
+
 // ListJobTemplates shows a list of job templates.
 func (jt *JobTemplateService) ListJobTemplates(params map[string]string) ([]*JobTemplate, *ListJobTemplatesResponse, error) {
 	result := new(ListJobTemplatesResponse)
-	endpoint := "/api/v2/job_templates/"
-	resp, err := jt.client.Requester.GetJSON(endpoint, result, params)
+	resp, err := jt.client.Requester.GetJSON(jobTemplateAPIEndpoint, result, params)
 	if err != nil {
 		return nil, result, err
 	}
@@ -37,7 +38,7 @@ func (jt *JobTemplateService) ListJobTemplates(params map[string]string) ([]*Job
 // Launch lauchs a job with the job template.
 func (jt *JobTemplateService) Launch(id int, data map[string]interface{}, params map[string]string) (*JobLaunch, error) {
 	result := new(JobLaunch)
-	endpoint := fmt.Sprintf("/api/v2/job_templates/%d/launch/", id)
+	endpoint := fmt.Sprintf("%s%d/launch/", jobTemplateAPIEndpoint, id)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -69,13 +70,12 @@ func (jt *JobTemplateService) CreateJobTemplate(data map[string]interface{}, par
 		err := fmt.Errorf("Mandatory input arguments are absent: %s", validate)
 		return nil, err
 	}
-	endpoint := "/api/v2/job_templates/"
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
 	}
 
-	resp, err := jt.client.Requester.PostJSON(endpoint, bytes.NewReader(payload), result, params)
+	resp, err := jt.client.Requester.PostJSON(jobTemplateAPIEndpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func (jt *JobTemplateService) CreateJobTemplate(data map[string]interface{}, par
 // UpdateJobTemplate updates a job template
 func (jt *JobTemplateService) UpdateJobTemplate(id int, data map[string]interface{}, params map[string]string) (*JobTemplate, error) {
 	result := new(JobTemplate)
-	endpoint := fmt.Sprintf("/api/v2/job_templates/%d", id)
+	endpoint := fmt.Sprintf("%s%d", jobTemplateAPIEndpoint, id)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -107,7 +107,7 @@ func (jt *JobTemplateService) UpdateJobTemplate(id int, data map[string]interfac
 // DeleteJobTemplate deletes a job template
 func (jt *JobTemplateService) DeleteJobTemplate(id int) (*JobTemplate, error) {
 	result := new(JobTemplate)
-	endpoint := fmt.Sprintf("/api/v2/job_templates/%d", id)
+	endpoint := fmt.Sprintf("%s%d", jobTemplateAPIEndpoint, id)
 
 	resp, err := jt.client.Requester.Delete(endpoint, result, nil)
 	if err != nil {

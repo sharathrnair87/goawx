@@ -5,11 +5,12 @@ type PingService struct {
 	client *Client
 }
 
+const pingAPIEndpoint = "/api/v2/ping/"
+
 // Ping do ping with awx servers.
 func (p *PingService) Ping() (*Ping, error) {
 	result := new(Ping)
-	endpoint := "/api/v2/ping/"
-	resp, err := p.client.Requester.GetJSON(endpoint, result, map[string]string{})
+	resp, err := p.client.Requester.GetJSON(pingAPIEndpoint, result, map[string]string{})
 	if err != nil {
 		return nil, err
 	}

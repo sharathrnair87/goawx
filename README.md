@@ -1,8 +1,11 @@
-# awx-go
+# goawx
 
 AWX (Ansible Tower) SDK for the Go programming language.
 
-This SDK has been developed against AWX 14.0.0.
+Please consider this code as beta right now. It could break, but I'll try my best to keep breaking changes out of the
+`master` branch. I'm working on my system tests for all endpoints.
+
+This SDK has been developed against AWX `14.0.0`.
 
 ## Installing
 
@@ -12,17 +15,17 @@ go get -u github.com/mrcrilly/goawx
 
 ## Example
 
-We can simply import awx-go and call its services, such as PingService:
+We can simply import `goawx` and call its services, such as the PingService:
 
 ```
 import (
     "log"
-    awxGo "github.com/Colstuwjx/awx-go"
+    "github.com/mrcrilly/goawx/client"
 )
 
 func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    result, err := awx.PingService.Ping()
+    client := awx.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
+    result, err := client.PingService.Ping()
     if err != nil {
         log.Fatalf("Ping awx err: %s", err)
     }
@@ -31,16 +34,17 @@ func main() {
 }
 ```
 
-More examples can be found at [here](https://github.com/Colstuwjx/awx-go/tree/master/examples).
+More examples can be found at [here](https://github.com/mrcrilly/goawx/tree/master/examples).
 
 ## Roadmap
 
-awx-go is still in development, and its roadmap could be found at [here](https://github.com/Colstuwjx/awx-go/blob/master/ROADMAP.md).
+goawx is still in development, and its roadmap could be found at [here](https://github.com/mrcrilly/goawx/blob/master
+/ROADMAP.md).
 
 ## Contribute
 
 There are many ways to contribute to awx-go.
 
-* Submit bugs via [Github issues](https://github.com/Colstuwjx/awx-go/issues);
-* Submit a [pull request](https://github.com/Colstuwjx/awx-go/pulls) for fixes or features;
-* Mail [me](mailto:wjx_colstu@hotmail.com)
+* Submit bugs via [Github issues](https://github.com/mrcrilly/goawx/issues);
+* Submit a [pull request](https://github.com/mrcrilly/goawx/pulls) for fixes or features;
+

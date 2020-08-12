@@ -40,10 +40,12 @@ type CancelJobResponse struct {
 	Detail string `json:"detail"`
 }
 
+const jobAPIEndpoint = "/api/v2/jobs/"
+
 // GetJob shows the details of a job.
 func (j *JobService) GetJob(id int, params map[string]string) (*Job, error) {
 	result := new(Job)
-	endpoint := fmt.Sprintf("/api/v2/jobs/%d/", id)
+	endpoint := fmt.Sprintf("%s%d/", jobAPIEndpoint, id)
 	resp, err := j.client.Requester.GetJSON(endpoint, result, params)
 	if err != nil {
 		return nil, err
@@ -59,7 +61,7 @@ func (j *JobService) GetJob(id int, params map[string]string) (*Job, error) {
 // CancelJob cancels a job.
 func (j *JobService) CancelJob(id int, data map[string]interface{}, params map[string]string) (*CancelJobResponse, error) {
 	result := new(CancelJobResponse)
-	endpoint := fmt.Sprintf("/api/v2/jobs/%d/cancel/", id)
+	endpoint := fmt.Sprintf("%s%d/cancel/", jobAPIEndpoint, id)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -80,7 +82,7 @@ func (j *JobService) CancelJob(id int, data map[string]interface{}, params map[s
 // RelaunchJob relaunch a job.
 func (j *JobService) RelaunchJob(id int, data map[string]interface{}, params map[string]string) (*JobLaunch, error) {
 	result := new(JobLaunch)
-	endpoint := fmt.Sprintf("/api/v2/jobs/%d/relaunch/", id)
+	endpoint := fmt.Sprintf("%s%d/relaunch/", jobAPIEndpoint, id)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -101,7 +103,7 @@ func (j *JobService) RelaunchJob(id int, data map[string]interface{}, params map
 // GetHostSummaries get a job hosts summaries.
 func (j *JobService) GetHostSummaries(id int, params map[string]string) ([]HostSummary, *HostSummariesResponse, error) {
 	result := new(HostSummariesResponse)
-	endpoint := fmt.Sprintf("/api/v2/jobs/%d/job_host_summaries/", id)
+	endpoint := fmt.Sprintf("%s%d/job_host_summaries/", jobAPIEndpoint, id)
 	resp, err := j.client.Requester.GetJSON(endpoint, result, params)
 	if err != nil {
 		return nil, result, err
@@ -117,7 +119,7 @@ func (j *JobService) GetHostSummaries(id int, params map[string]string) ([]HostS
 // GetJobEvents get a list of job events.
 func (j *JobService) GetJobEvents(id int, params map[string]string) ([]JobEvent, *JobEventsResponse, error) {
 	result := new(JobEventsResponse)
-	endpoint := fmt.Sprintf("/api/v2/jobs/%d/job_events/", id)
+	endpoint := fmt.Sprintf("%s%d/job_events/", jobAPIEndpoint, id)
 	resp, err := j.client.Requester.GetJSON(endpoint, result, params)
 	if err != nil {
 		return nil, result, err

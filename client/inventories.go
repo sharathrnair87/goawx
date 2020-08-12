@@ -17,11 +17,12 @@ type ListInventoriesResponse struct {
 	Results []*Inventory `json:"results"`
 }
 
+const inventoriesAPIEndpoint = "/api/v2/inventories/"
+
 // ListInventories shows list of awx inventories.
 func (i *InventoriesService) ListInventories(params map[string]string) ([]*Inventory, *ListInventoriesResponse, error) {
 	result := new(ListInventoriesResponse)
-	endpoint := "/api/v2/inventories/"
-	resp, err := i.client.Requester.GetJSON(endpoint, result, params)
+	resp, err := i.client.Requester.GetJSON(inventoriesAPIEndpoint, result, params)
 	if err != nil {
 		return nil, result, err
 	}
@@ -44,7 +45,6 @@ func (i *InventoriesService) CreateInventory(data map[string]interface{}, params
 	}
 
 	result := new(Inventory)
-	endpoint := "/api/v2/inventories/"
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -52,7 +52,7 @@ func (i *InventoriesService) CreateInventory(data map[string]interface{}, params
 
 	// Add check if inventory exists and return proper error
 
-	resp, err := i.client.Requester.PostJSON(endpoint, bytes.NewReader(payload), result, params)
+	resp, err := i.client.Requester.PostJSON(inventoriesAPIEndpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func (i *InventoriesService) CreateInventory(data map[string]interface{}, params
 // UpdateInventory update an awx inventory
 func (i *InventoriesService) UpdateInventory(id int, data map[string]interface{}, params map[string]string) (*Inventory, error) {
 	result := new(Inventory)
-	endpoint := fmt.Sprintf("/api/v2/inventories/%d", id)
+	endpoint := fmt.Sprintf("%s%d", inventoriesAPIEndpoint, id)
 	payload, err := json.Marshal(data)
 	if err != nil {
 		return nil, err
@@ -86,7 +86,7 @@ func (i *InventoriesService) UpdateInventory(id int, data map[string]interface{}
 
 // GetInventory retrives the inventory information from its ID or Name
 func (i *InventoriesService) GetInventory(id int, params map[string]string) (*Inventory, error) {
-	endpoint := fmt.Sprintf("/api/v2/inventories/%d", id)
+	endpoint := fmt.Sprintf("%s%d", inventoriesAPIEndpoint, id)
 	result := new(Inventory)
 	resp, err := i.client.Requester.GetJSON(endpoint, result, map[string]string{})
 	if err != nil {
@@ -104,7 +104,7 @@ func (i *InventoriesService) GetInventory(id int, params map[string]string) (*In
 // DeleteInventory delete an inventory from AWX
 func (i *InventoriesService) DeleteInventory(id int) (*Inventory, error) {
 	result := new(Inventory)
-	endpoint := fmt.Sprintf("/api/v2/inventories/%d", id)
+	endpoint := fmt.Sprintf("%s%d", inventoriesAPIEndpoint, id)
 
 	resp, err := i.client.Requester.Delete(endpoint, result, nil)
 	if err != nil {

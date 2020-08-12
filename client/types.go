@@ -82,8 +82,8 @@ type Related struct {
 	AnsibleFacts                 string `json:"ansible_facts"`
 }
 
-// OrgnizationSummary represents the awx api orgnization summary fields.
-type OrgnizationSummary struct {
+// OrganizationSummary represents the awx api organization summary fields.
+type OrganizationSummary struct {
 	ID          int    `json:"id"`
 	Name        string `json:"name"`
 	Description string `json:"description"`
@@ -147,7 +147,7 @@ type Labels struct {
 // Summary represents the awx api summary fields.
 type Summary struct {
 	InstanceGroup      *InstanceGroupSummary  `json:"instance_group"`
-	Organization       *OrgnizationSummary    `json:"organization"`
+	Organization       *OrganizationSummary   `json:"organization"`
 	CreatedBy          *ByUserSummary         `json:"created_by"`
 	ModifiedBy         *ByUserSummary         `json:"modified_by"`
 	ObjectRoles        *ObjectRoles           `json:"object_roles"`
@@ -239,16 +239,18 @@ type Inventory struct {
 
 // Credential represents the awx api credential.
 type Credential struct {
-	Description      string `json:"description"`
-	CredentialTypeID int    `json:"credential_type_id"`
-	ID               int    `json:"id"`
-	Kind             string `json:"kind"`
-	Name             string `json:"name"`
+	Description      string                 `json:"description"`
+	CredentialTypeID int                    `json:"credential_type_id"`
+	ID               int                    `json:"id"`
+	Kind             string                 `json:"kind"`
+	Name             string                 `json:"name"`
+	Inputs           map[string]interface{} `json:"inputs"`
+	SummaryFields    map[string]interface{} `json:"summary_fields"`
 }
 
 type CredentialType struct {
 	ID     int         `json:"ID"`
-	Type   string      `json":type"`
+	Type   string      `json:"type"`
 	Name   string      `json:"name"`
 	Kind   string      `json:"kind"`
 	Inputs interface{} `json:"inputs"`

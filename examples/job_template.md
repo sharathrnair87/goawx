@@ -1,121 +1,72 @@
 # Job Template API
 
+Please refer to `client.md` before reviewing these examples.
+
 ## Usage
 
 > List Job Templates
 
 ```go
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
-
-fun main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    result, _, err := awx.JobTemplateService.ListJobTemplates(map[string]string{})
-    if err != nil {
-        log.Fatalf("List Job Templates err: %s", err)
-    }
-
-    log.Println("List Job Templates: ", result)
+result, _, err := client.JobTemplateService.ListJobTemplates(map[string]string{})
+if err != nil {
+    log.Fatalf("List Job Templates err: %s", err)
 }
+
+log.Println("List Job Templates: ", result)
 ```
 
 > Launch Job Template
 
 ```go
-import (
-    "log"
-    awxGo "github.com/Colstuwjx/awx-go"
-)
-
-fun main() {
-    var (
-        yourJobTemplateId = 1
-        yourInventoryId = 1
-    )
-
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-    result, err := awx.JobTemplateService.Launch(yourJobTemplateId, map[string]interface{}{
-        "inventory": yourInventoryId,
-    }, map[string]string{})
-    if err != nil {
-        log.Fatalf("Lauch err: %s", err)
-    }
-
-    log.Println("Launch Job Template: ", result)
+result, err := client.JobTemplateService.Launch(yourJobTemplateId, map[string]interface{}{
+    "inventory": yourInventoryId,
+}, map[string]string{})
+if err != nil {
+    log.Fatalf("Lauch err: %s", err)
 }
+
+log.Println("Launch Job Template: ", result)
 ```
 
 > Create Job Template
 
 ```go
-import (
-    "log"
+result, err := client.JobTemplateService.CreateJobTemplate(map[string]interface{}{
+    "name":        "Example Create Job Template",
+    "description": "Created from awx-go Example",
+    "job_type":    "run",
+    "inventory":   1,
+    "project":     1,
+    "playbook":    "playbook.yml",
+    "verbosity":   0,
+}, map[string]string{})
 
-    awxGo "github.com/Colstuwjx/awx-go"
-)
-
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-
-    result, err := awx.JobTemplateService.CreateJobTemplate(map[string]interface{}{
-        "name":        "Example Create Job Template",
-        "description": "Created from awx-go Example",
-        "job_type":    "run",
-        "inventory":   1,
-        "project":     1,
-        "playbook":    "playbook.yml",
-        "verbosity":   0,
-    }, map[string]string{})
-
-    if err != nil {
-        log.Fatalf("Create job template err: %s", err)
-    }
-    log.Printf("Job template created. JobTemplate ID: %d", result.ID)
+if err != nil {
+    log.Fatalf("Create job template err: %s", err)
 }
+log.Printf("Job template created. JobTemplate ID: %d", result.ID)
 ```
 
 > Update Job Template
 
 ```go
-import (
-    "log"
+result, err := client.JobTemplateService.UpdateJobTemplate(5, map[string]interface{}{
+    "description": "Update Job Template",
+}, map[string]string{})
 
-    awxGo "github.com/Colstuwjx/awx-go"
-)
-
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-
-    result, err := awx.JobTemplateService.UpdateJobTemplate(5, map[string]interface{}{
-        "description": "Update Job Template",
-    }, map[string]string{})
-
-    if err != nil {
-        log.Fatalf("Update job template err: %s", err)
-    }
-    log.Printf("Job template Updated. JobTemplate ID: %d", result.ID)
+if err != nil {
+    log.Fatalf("Update job template err: %s", err)
 }
+log.Printf("Job template Updated. JobTemplate ID: %d", result.ID)
 ```
 
 > Delete Job Template
 
 ```go
-import (
-    "log"
+result, err := client.JobTemplateService.DeleteJobTemplate(5)
 
-    awxGo "github.com/Colstuwjx/awx-go"
-)
-
-func main() {
-    awx := awxGo.NewAWX("http://awx.your_server_host.com", "your_awx_username", "your_awx_passwd", nil)
-
-    result, err := awx.JobTemplateService.DeleteJobTemplate(5)
-
-    if err != nil {
-        log.Fatalf("Delete job template err: %s", err)
-    }
-    log.Printf("Job template Deleted. JobTemplate ID: %d", result.ID)
+if err != nil {
+    log.Fatalf("Delete job template err: %s", err)
 }
+log.Printf("Job template Deleted. JobTemplate ID: %d", result.ID)
 ```
