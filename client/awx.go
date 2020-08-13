@@ -56,7 +56,7 @@ func ValidateParams(data map[string]interface{}, mandatoryFields []string) (notf
 
 // NewAWX news an awx handler with basic auth support, you could customize the http
 // transport by passing custom client.
-func NewAWX(baseURL, userName, passwd string, client *http.Client) *AWX {
+func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error) {
 	r := &Requester{Base: baseURL, BasicAuth: &BasicAuth{Username: userName, Password: passwd}, Client: client}
 	if r.Client == nil {
 		r.Client = http.DefaultClient
@@ -67,7 +67,7 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) *AWX {
 		Requester: r,
 	}
 
-	return &AWX{
+	newAWX := &AWX{
 		client: awxClient,
 
 		PingService: &PingService{
@@ -101,4 +101,12 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) *AWX {
 			client: awxClient,
 		},
 	}
+
+	// test the connection and return and error if there's an issue
+	_, err := newAWX.PingService.Ping()
+	if err != nil {
+		return nil, err
+	}
+
+	return newAWX, nil
 }

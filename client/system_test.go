@@ -35,6 +35,7 @@ var (
 )
 
 func TestMain(m *testing.M) {
+	var err error
 	awxHostname = os.Getenv("GOAWX_HOSTNAME")
 	awxUsername = os.Getenv("GOAWX_USERNAME")
 	awxPassword = os.Getenv("GOAWX_PASSWORD")
@@ -51,7 +52,11 @@ func TestMain(m *testing.M) {
 		log.Fatal("no AWX password provided")
 	}
 
-	awxClient = NewAWX(awxHostname, awxUsername, awxPassword, nil)
+	awxClient, err = NewAWX(awxHostname, awxUsername, awxPassword, nil)
+	if err != nil {
+		panic(err)
+	}
+
 	os.Exit(m.Run())
 }
 
