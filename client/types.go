@@ -240,10 +240,11 @@ type Inventory struct {
 // Credential represents the awx api credential.
 type Credential struct {
 	Description      string                 `json:"description"`
-	CredentialTypeID int                    `json:"credential_type_id"`
 	ID               int                    `json:"id"`
 	Kind             string                 `json:"kind"`
 	Name             string                 `json:"name"`
+	OrganizationID   int                    `json:"organization"`
+	CredentialTypeID int                    `json:"credential_type_id"`
 	Inputs           map[string]interface{} `json:"inputs"`
 	SummaryFields    map[string]interface{} `json:"summary_fields"`
 }
