@@ -2,6 +2,7 @@ package awx
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -91,6 +92,20 @@ func (r *Requester) Do(ar *APIRequest, responseStruct interface{}, options ...in
 	response, err := r.Client.Do(req)
 	if err != nil {
 		return nil, err
+	}
+
+	if response.StatusCode == 400 { // Bad Request
+		var errorString string
+
+		errorList := map[string][]string{}
+		json.NewDecoder(response.Body).Decode(&errorList)
+
+		errorString = "Errors:"
+		for k,v := range errorList {
+			errorString = fmt.Sprintf("%s\n- %s: %+v", errorString, k, v)
+		}
+
+		return response, errors.New(errorString)
 	}
 
 	switch responseStruct.(type) {
