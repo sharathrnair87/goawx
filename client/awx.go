@@ -13,18 +13,25 @@ var mandatoryFields []string
 type AWX struct {
 	client *Client
 
-	PingService                  *PingService
-	InventoriesService           *InventoriesService
-	JobService                   *JobService
-	JobTemplateService           *JobTemplateService
-	ProjectService               *ProjectService
-	ProjectUpdatesService        *ProjectUpdatesService
-	UserService                  *UserService
-	GroupService                 *GroupService
-	HostService                  *HostService
-	CredentialsService           *CredentialsService
-	CredentialInputSourceService *CredentialInputSourceService
-	InventorySourcesService      *InventorySourcesService
+	PingService                           *PingService
+	InventoriesService                    *InventoriesService
+	JobService                            *JobService
+	JobTemplateService                    *JobTemplateService
+	ProjectService                        *ProjectService
+	ProjectUpdatesService                 *ProjectUpdatesService
+	UserService                           *UserService
+	GroupService                          *GroupService
+	HostService                           *HostService
+	CredentialsService                    *CredentialsService
+	CredentialInputSourceService          *CredentialInputSourceService
+	InventorySourcesService               *InventorySourcesService
+	InventoryGroupService                 *InventoryGroupService
+	OrganizationsService                  *OrganizationsService
+	WorkflowJobTemplateService            *WorkflowJobTemplateService
+	WorkflowJobTemplateNodeService        *WorkflowJobTemplateNodeService
+	WorkflowJobTemplateNodeAllwaysService *WorkflowJobTemplateNodeStepService
+	WorkflowJobTemplateNodeFailureService *WorkflowJobTemplateNodeStepService
+	WorkflowJobTemplateNodeSuccessService *WorkflowJobTemplateNodeStepService
 }
 
 // Client implement http client.
@@ -107,6 +114,30 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error)
 		},
 		InventorySourcesService: &InventorySourcesService{
 			client: awxClient,
+		},
+		InventoryGroupService: &InventoryGroupService{
+			client: awxClient,
+		},
+		OrganizationsService: &OrganizationsService{
+			client: awxClient,
+		},
+		WorkflowJobTemplateService: &WorkflowJobTemplateService{
+			client: awxClient,
+		},
+		WorkflowJobTemplateNodeService: &WorkflowJobTemplateNodeService{
+			client: awxClient,
+		},
+		WorkflowJobTemplateNodeSuccessService: &WorkflowJobTemplateNodeStepService{
+			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/success_nodes/"),
+			client:   awxClient,
+		},
+		WorkflowJobTemplateNodeFailureService: &WorkflowJobTemplateNodeStepService{
+			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/failure_nodes/"),
+			client:   awxClient,
+		},
+		WorkflowJobTemplateNodeAllwaysService: &WorkflowJobTemplateNodeStepService{
+			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/allways_nodes/"),
+			client:   awxClient,
 		},
 	}
 
