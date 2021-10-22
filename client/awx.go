@@ -23,6 +23,7 @@ type AWX struct {
 	GroupService                          *GroupService
 	HostService                           *HostService
 	CredentialsService                    *CredentialsService
+	CredentialTypeService                 *CredentialTypeService
 	CredentialInputSourceService          *CredentialInputSourceService
 	InventorySourcesService               *InventorySourcesService
 	InventoryGroupService                 *InventoryGroupService
@@ -107,6 +108,9 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error)
 			client: awxClient,
 		},
 		CredentialsService: &CredentialsService{
+			client: awxClient,
+		},
+		CredentialTypeService: &CredentialTypeService{
 			client: awxClient,
 		},
 		CredentialInputSourceService: &CredentialInputSourceService{
