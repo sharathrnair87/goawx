@@ -5,13 +5,13 @@ import (
 	"encoding/json"
 )
 
-type SettingGithubEnterpriseService struct {
+type SettingsGithubEnterpriseService struct {
 	client *Client
 }
 
 const settingsGithubEnterpriseAPIEndpoint = "/api/v2/settings/github-enterprise/"
 
-func (setting *SettingGithubEnterpriseService) GetSettingsGithubEnterprise(params map[string]string) (*SettingsGithubEnterprise, error) {
+func (setting *SettingsGithubEnterpriseService) GetSettingsGithubEnterprise(params map[string]string) (*SettingsGithubEnterprise, error) {
 	result := new(SettingsGithubEnterprise)
 	endpoint := settingsGithubEnterpriseAPIEndpoint
 	resp, err := setting.client.Requester.GetJSON(endpoint, result, params)
@@ -27,7 +27,7 @@ func (setting *SettingGithubEnterpriseService) GetSettingsGithubEnterprise(param
 	return result, nil
 }
 
-func (setting *SettingGithubEnterpriseService) CreateSettingsGithubEnterprise(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterprise, error) {
+func (setting *SettingsGithubEnterpriseService) CreateSettingsGithubEnterprise(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterprise, error) {
 	result := new(SettingsGithubEnterprise)
 	endpoint := settingsGithubEnterpriseAPIEndpoint
 
@@ -49,7 +49,7 @@ func (setting *SettingGithubEnterpriseService) CreateSettingsGithubEnterprise(da
 	return result, nil
 }
 
-func (setting *SettingGithubEnterpriseService) UpdateSettingsGithubEnterprise(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterprise, error) {
+func (setting *SettingsGithubEnterpriseService) UpdateSettingsGithubEnterprise(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterprise, error) {
 	result := new(SettingsGithubEnterprise)
 	endpoint := settingsGithubEnterpriseAPIEndpoint
 
@@ -71,7 +71,7 @@ func (setting *SettingGithubEnterpriseService) UpdateSettingsGithubEnterprise(da
 	return result, nil
 }
 
-func (setting *SettingGithubEnterpriseService) DeleteSettingsGithubEnterprise(params map[string]string) error {
+func (setting *SettingsGithubEnterpriseService) DeleteSettingsGithubEnterprise(params map[string]string) error {
 	endpoint := settingsGithubEnterpriseAPIEndpoint
 	resp, err := setting.client.Requester.Delete(endpoint, nil, params)
 	if err != nil {
