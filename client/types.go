@@ -788,7 +788,6 @@ type WorkflowJobTemplateNode struct {
 }
 
 type SettingsGithubEnterprise struct {
-	GithubEnterpriseCallbackURL     string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL"`
 	GithubEnterpriseURL             string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_URL"`
 	GithubEnterpriseAPIURL          string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL"`
 	GithubEnterpriseKey             string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY"`
