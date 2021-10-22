@@ -788,10 +788,10 @@ type WorkflowJobTemplateNode struct {
 }
 
 type SettingsGithubEnterprise struct {
-	GithubEnterpriseURL             string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_URL"`
-	GithubEnterpriseAPIURL          string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL"`
-	GithubEnterpriseKey             string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY"`
-	GithubEnterpriseSecret          string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET"`
-	GithubEnterpriseOrganizationMap interface{} `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP"`
-	GithubEnterpriseTeamMap         interface{} `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP"`
+	GithubEnterpriseURL             string                 `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_URL"`
+	GithubEnterpriseAPIURL          string                 `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_API_URL"`
+	GithubEnterpriseKey             string                 `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_KEY"`
+	GithubEnterpriseSecret          string                 `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_SECRET"`
+	GithubEnterpriseOrganizationMap map[string]interface{} `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_ORGANIZATION_MAP"`
+	GithubEnterpriseTeamMap         map[string]interface{} `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_TEAM_MAP"`
 }
