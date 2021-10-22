@@ -250,12 +250,12 @@ type Credential struct {
 }
 
 type CredentialType struct {
-	ID        int         `json:"ID"`
-	Type      string      `json:"type"`
-	Name      string      `json:"name"`
-	Kind      string      `json:"kind"`
-	Inputs    interface{} `json:"inputs"`
-	Injectors interface{} `json:"injectors"`
+	ID          int         `json:"ID"`
+	Name        string      `json:"name"`
+	Description string      `json:"description"`
+	Kind        string      `json:"kind"`
+	Inputs      interface{} `json:"inputs"`
+	Injectors   interface{} `json:"injectors"`
 }
 
 type CredentialInputSource struct {
