@@ -786,3 +786,11 @@ type WorkflowJobTemplateNode struct {
 	AllParentsMustConverge bool      `json:"all_parents_must_converge"`
 	Identifier             string    `json:"identifier"`
 }
+
+type SettingsGithubEnterprise struct {
+	GithubEnterpriseCallbackURL string      `json:"SOCIAL_AUTH_GITHUB_ENTERPRISE_CALLBACK_URL"`
+	GithubKey                   string      `json:"SOCIAL_AUTH_GITHUB_KEY"`
+	GithubSecret                string      `json:"SOCIAL_AUTH_GITHUB_SECRET"`
+	GithubOrganizationMap       interface{} `json:"SOCIAL_AUTH_GITHUB_ORGANIZATION_MAP"`
+	GithubTeamMap               interface{} `json:"SOCIAL_AUTH_GITHUB_TEAM_MAP"`
+}
