@@ -58,7 +58,7 @@ func (setting *SettingsGithubEnterpriseService) UpdateSettingsGithubEnterprise(d
 		return nil, err
 	}
 
-	resp, err := setting.client.Requester.PutJSON(endpoint, bytes.NewReader(payload), result, params)
+	resp, err := setting.client.Requester.PatchJSON(endpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
