@@ -33,7 +33,7 @@ type AWX struct {
 	WorkflowJobTemplateNodeAllwaysService *WorkflowJobTemplateNodeStepService
 	WorkflowJobTemplateNodeFailureService *WorkflowJobTemplateNodeStepService
 	WorkflowJobTemplateNodeSuccessService *WorkflowJobTemplateNodeStepService
-	SettingsGithubEnterpriseService       *SettingsGithubEnterpriseService
+	SettingsService                       *SettingsService
 }
 
 // Client implement http client.
@@ -144,7 +144,7 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error)
 			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/allways_nodes/"),
 			client:   awxClient,
 		},
-		SettingsGithubEnterpriseService: &SettingsGithubEnterpriseService{
+		SettingsService: &SettingsService{
 			client: awxClient,
 		},
 	}
