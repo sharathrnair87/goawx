@@ -32,7 +32,7 @@ func (s *SettingsService) CreateSettingsAzureADOauth2(data map[string]interface{
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsAzureADOauth2(data map[string]interface{}, params map[string]string) (*SettingsAzureADOauth2, error) {
+func (s *SettingsService) GetSettingsAzureADOauth2(params map[string]string) (*SettingsAzureADOauth2, error) {
 	result := new(SettingsAzureADOauth2)
 	resp, err := s.client.Requester.GetJSON(azureOauth2APIEndpoint, result, params)
 	if err != nil {
