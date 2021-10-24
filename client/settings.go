@@ -12,7 +12,7 @@ type SettingsService struct {
 // Azure AD Oauth 2
 const azureOauth2APIEndpoint = "/api/v2/settings/azuread-oauth2/"
 
-func (s *SettingsService) CreateSettingsAzureADOauth2(data interface{}, params map[string]string) (*SettingsAzureADOauth2, error) {
+func (s *SettingsService) CreateSettingsAzureADOauth2(data map[string]interface{}, params map[string]string) (*SettingsAzureADOauth2, error) {
 	result := new(SettingsAzureADOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -32,7 +32,7 @@ func (s *SettingsService) CreateSettingsAzureADOauth2(data interface{}, params m
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsAzureADOauth2(data interface{}, params map[string]string) (*SettingsAzureADOauth2, error) {
+func (s *SettingsService) GetSettingsAzureADOauth2(data map[string]interface{}, params map[string]string) (*SettingsAzureADOauth2, error) {
 	result := new(SettingsAzureADOauth2)
 	resp, err := s.client.Requester.GetJSON(azureOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -47,7 +47,7 @@ func (s *SettingsService) GetSettingsAzureADOauth2(data interface{}, params map[
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsAzureADOauth2(data interface{}, params map[string]string) (*SettingsAzureADOauth2, error) {
+func (s *SettingsService) UpdateSettingsAzureADOauth2(data map[string]interface{}, params map[string]string) (*SettingsAzureADOauth2, error) {
 	result := new(SettingsAzureADOauth2)
 
 	payload, err := json.Marshal(data)
@@ -85,7 +85,7 @@ func (s *SettingsService) DeleteSettingsAzureADOauth2(params map[string]string) 
 // Github.com Oauth2
 const githubOauth2APIEndpoint = "/api/v2/settings/github/"
 
-func (s *SettingsService) CreateSettingsGithubOauth2(data interface{}, params map[string]string) (*SettingsGithubOauth2, error) {
+func (s *SettingsService) CreateSettingsGithubOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubOauth2, error) {
 	result := new(SettingsGithubOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -105,7 +105,7 @@ func (s *SettingsService) CreateSettingsGithubOauth2(data interface{}, params ma
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsGithubOauth2(data interface{}, params map[string]string) (*SettingsGithubOauth2, error) {
+func (s *SettingsService) GetSettingsGithubOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubOauth2, error) {
 	result := new(SettingsGithubOauth2)
 	resp, err := s.client.Requester.GetJSON(githubOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -120,7 +120,7 @@ func (s *SettingsService) GetSettingsGithubOauth2(data interface{}, params map[s
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsGithubOauth2(data interface{}, params map[string]string) (*SettingsGithubOauth2, error) {
+func (s *SettingsService) UpdateSettingsGithubOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubOauth2, error) {
 	result := new(SettingsGithubOauth2)
 
 	payload, err := json.Marshal(data)
@@ -158,7 +158,7 @@ func (s *SettingsService) DeleteSettingsGithubOauth2(params map[string]string) e
 // GitHub Enterprise OAuth2
 const githubEnterpriseOauth2APIEndpoint = "/api/v2/settings/github-enterprise/"
 
-func (s *SettingsService) CreateSettingsGithubEnterpriseOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseOauth2, error) {
+func (s *SettingsService) CreateSettingsGithubEnterpriseOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseOauth2, error) {
 	result := new(SettingsGithubEnterpriseOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -178,7 +178,7 @@ func (s *SettingsService) CreateSettingsGithubEnterpriseOauth2(data interface{},
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsGithubEnterpriseOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseOauth2, error) {
+func (s *SettingsService) GetSettingsGithubEnterpriseOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseOauth2, error) {
 	result := new(SettingsGithubEnterpriseOauth2)
 	resp, err := s.client.Requester.GetJSON(githubEnterpriseOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -193,7 +193,7 @@ func (s *SettingsService) GetSettingsGithubEnterpriseOauth2(data interface{}, pa
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsGithubEnterpriseOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseOauth2, error) {
+func (s *SettingsService) UpdateSettingsGithubEnterpriseOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseOauth2, error) {
 	result := new(SettingsGithubEnterpriseOauth2)
 
 	payload, err := json.Marshal(data)
@@ -231,7 +231,7 @@ func (s *SettingsService) DeleteSettingsGithubEnterpriseOauth2(params map[string
 // GitHub Enterprise Organization OAuth2
 const githubEnterpriseOrgOauth2APIEndpoint = "/api/v2/settings/github-enterprise-org/"
 
-func (s *SettingsService) CreateSettingsGithubEnterpriseOrgOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseOrgOauth2, error) {
+func (s *SettingsService) CreateSettingsGithubEnterpriseOrgOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseOrgOauth2, error) {
 	result := new(SettingsGithubEnterpriseOrgOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -251,7 +251,7 @@ func (s *SettingsService) CreateSettingsGithubEnterpriseOrgOauth2(data interface
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsGithubEnterpriseOrgOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseOrgOauth2, error) {
+func (s *SettingsService) GetSettingsGithubEnterpriseOrgOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseOrgOauth2, error) {
 	result := new(SettingsGithubEnterpriseOrgOauth2)
 	resp, err := s.client.Requester.GetJSON(githubEnterpriseOrgOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -266,7 +266,7 @@ func (s *SettingsService) GetSettingsGithubEnterpriseOrgOauth2(data interface{},
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsGithubEnterpriseOrgOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseOrgOauth2, error) {
+func (s *SettingsService) UpdateSettingsGithubEnterpriseOrgOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseOrgOauth2, error) {
 	result := new(SettingsGithubEnterpriseOrgOauth2)
 
 	payload, err := json.Marshal(data)
@@ -304,7 +304,7 @@ func (s *SettingsService) DeleteSettingsGithubEnterpriseOrgOauth2(params map[str
 // GitHub Enterprise Team OAuth2
 const githubEnterpriseTeamOauth2APIEndpoint = "/api/v2/settings/github-enterprise-team/"
 
-func (s *SettingsService) CreateSettingsGithubEnterpriseTeamOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseTeamOauth2, error) {
+func (s *SettingsService) CreateSettingsGithubEnterpriseTeamOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseTeamOauth2, error) {
 	result := new(SettingsGithubEnterpriseTeamOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -324,7 +324,7 @@ func (s *SettingsService) CreateSettingsGithubEnterpriseTeamOauth2(data interfac
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsGithubEnterpriseTeamOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseTeamOauth2, error) {
+func (s *SettingsService) GetSettingsGithubEnterpriseTeamOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseTeamOauth2, error) {
 	result := new(SettingsGithubEnterpriseTeamOauth2)
 	resp, err := s.client.Requester.GetJSON(githubEnterpriseTeamOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -339,7 +339,7 @@ func (s *SettingsService) GetSettingsGithubEnterpriseTeamOauth2(data interface{}
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsGithubEnterpriseTeamOauth2(data interface{}, params map[string]string) (*SettingsGithubEnterpriseTeamOauth2, error) {
+func (s *SettingsService) UpdateSettingsGithubEnterpriseTeamOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubEnterpriseTeamOauth2, error) {
 	result := new(SettingsGithubEnterpriseTeamOauth2)
 
 	payload, err := json.Marshal(data)
@@ -377,7 +377,7 @@ func (s *SettingsService) DeleteSettingsGithubEnterpriseTeamOauth2(params map[st
 // GitHub Organization OAuth2
 const githubOrgOauth2APIEndpoint = "/api/v2/settings/github-org/"
 
-func (s *SettingsService) CreateSettingsGithubOrgOauth2(data interface{}, params map[string]string) (*SettingsGithubOrgOauth2, error) {
+func (s *SettingsService) CreateSettingsGithubOrgOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubOrgOauth2, error) {
 	result := new(SettingsGithubOrgOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -397,7 +397,7 @@ func (s *SettingsService) CreateSettingsGithubOrgOauth2(data interface{}, params
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsGithubOrgOauth2(data interface{}, params map[string]string) (*SettingsGithubOrgOauth2, error) {
+func (s *SettingsService) GetSettingsGithubOrgOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubOrgOauth2, error) {
 	result := new(SettingsGithubOrgOauth2)
 	resp, err := s.client.Requester.GetJSON(githubOrgOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -412,7 +412,7 @@ func (s *SettingsService) GetSettingsGithubOrgOauth2(data interface{}, params ma
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsGithubOrgOauth2(data interface{}, params map[string]string) (*SettingsGithubOrgOauth2, error) {
+func (s *SettingsService) UpdateSettingsGithubOrgOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubOrgOauth2, error) {
 	result := new(SettingsGithubOrgOauth2)
 
 	payload, err := json.Marshal(data)
@@ -450,7 +450,7 @@ func (s *SettingsService) DeleteSettingsGithubOrgOauth2(params map[string]string
 // GitHub Team OAuth2
 const githubTeamOauth2APIEndpoint = "/api/v2/settings/github-team/"
 
-func (s *SettingsService) CreateSettingsGithubTeamOauth2(data interface{}, params map[string]string) (*SettingsGithubTeamOauth2, error) {
+func (s *SettingsService) CreateSettingsGithubTeamOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubTeamOauth2, error) {
 	result := new(SettingsGithubTeamOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -470,7 +470,7 @@ func (s *SettingsService) CreateSettingsGithubTeamOauth2(data interface{}, param
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsGithubTeamOauth2(data interface{}, params map[string]string) (*SettingsGithubTeamOauth2, error) {
+func (s *SettingsService) GetSettingsGithubTeamOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubTeamOauth2, error) {
 	result := new(SettingsGithubTeamOauth2)
 	resp, err := s.client.Requester.GetJSON(githubTeamOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -485,7 +485,7 @@ func (s *SettingsService) GetSettingsGithubTeamOauth2(data interface{}, params m
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsGithubTeamOauth2(data interface{}, params map[string]string) (*SettingsGithubTeamOauth2, error) {
+func (s *SettingsService) UpdateSettingsGithubTeamOauth2(data map[string]interface{}, params map[string]string) (*SettingsGithubTeamOauth2, error) {
 	result := new(SettingsGithubTeamOauth2)
 
 	payload, err := json.Marshal(data)
@@ -523,7 +523,7 @@ func (s *SettingsService) DeleteSettingsGithubTeamOauth2(params map[string]strin
 // Google OAuth2
 const GoogleOauth2APIEndpoint = "/api/v2/settings/google-oauth2/"
 
-func (s *SettingsService) CreateSettingsGoogleOauth2(data interface{}, params map[string]string) (*SettingsGoogleOauth2, error) {
+func (s *SettingsService) CreateSettingsGoogleOauth2(data map[string]interface{}, params map[string]string) (*SettingsGoogleOauth2, error) {
 	result := new(SettingsGoogleOauth2)
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -543,7 +543,7 @@ func (s *SettingsService) CreateSettingsGoogleOauth2(data interface{}, params ma
 	return result, nil
 }
 
-func (s *SettingsService) GetSettingsGoogleOauth2(data interface{}, params map[string]string) (*SettingsGoogleOauth2, error) {
+func (s *SettingsService) GetSettingsGoogleOauth2(data map[string]interface{}, params map[string]string) (*SettingsGoogleOauth2, error) {
 	result := new(SettingsGoogleOauth2)
 	resp, err := s.client.Requester.GetJSON(GoogleOauth2APIEndpoint, result, params)
 	if err != nil {
@@ -558,7 +558,7 @@ func (s *SettingsService) GetSettingsGoogleOauth2(data interface{}, params map[s
 	return result, nil
 }
 
-func (s *SettingsService) UpdateSettingsGoogleOauth2(data interface{}, params map[string]string) (*SettingsGoogleOauth2, error) {
+func (s *SettingsService) UpdateSettingsGoogleOauth2(data map[string]interface{}, params map[string]string) (*SettingsGoogleOauth2, error) {
 	result := new(SettingsGoogleOauth2)
 
 	payload, err := json.Marshal(data)
