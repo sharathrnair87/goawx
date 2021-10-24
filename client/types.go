@@ -790,7 +790,6 @@ type WorkflowJobTemplateNode struct {
 // Settings structures
 // azuread-oauth2
 type SettingsAzureADOauth2 struct {
-	SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL     string      `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_CALLBACK_URL"`
 	SOCIAL_AUTH_AZUREAD_OAUTH2_KEY              string      `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_KEY"`
 	SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET           string      `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET"`
 	SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP interface{} `json:"SOCIAL_AUTH_AZUREAD_OAUTH2_ORGANIZATION_MAP"`
