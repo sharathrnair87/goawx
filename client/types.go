@@ -704,6 +704,7 @@ type InventorySource struct {
 	GroupBy               string      `json:"group_by"`
 	ID                    int         `json:"id"`
 	InstanceFilters       string      `json:"instance_filters"`
+	HostFilter            string      `json:"host_filter"`
 	Inventory             int         `json:"inventory"`
 	LastJobFailed         bool        `json:"last_job_failed"`
 	LastJobRun            interface{} `json:"last_job_run"`
