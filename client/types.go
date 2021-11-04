@@ -701,9 +701,9 @@ type InventorySource struct {
 	Credential            interface{} `json:"credential"`
 	CustomVirtualenv      interface{} `json:"custom_virtualenv"`
 	Description           string      `json:"description"`
-	GroupBy               string      `json:"group_by"`
 	ID                    int         `json:"id"`
-	InstanceFilters       string      `json:"instance_filters"`
+	EnabledVar            string      `json:"enabled_var"`
+	EnabledValue          string      `json:"enabled_value"`
 	HostFilter            string      `json:"host_filter"`
 	Inventory             int         `json:"inventory"`
 	LastJobFailed         bool        `json:"last_job_failed"`
@@ -719,7 +719,6 @@ type InventorySource struct {
 	Source                string      `json:"source"`
 	SourcePath            string      `json:"source_path"`
 	SourceProject         int         `json:"source_project"`
-	SourceRegions         string      `json:"source_regions"`
 	SourceScript          interface{} `json:"source_script"`
 	SourceVars            string      `json:"source_vars"`
 	Status                string      `json:"status"`
