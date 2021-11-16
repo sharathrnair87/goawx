@@ -28,6 +28,8 @@ type AWX struct {
 	InventorySourcesService               *InventorySourcesService
 	InventoryGroupService                 *InventoryGroupService
 	OrganizationsService                  *OrganizationsService
+	SettingService                        *SettingService
+	TeamService                           *TeamService
 	WorkflowJobTemplateService            *WorkflowJobTemplateService
 	WorkflowJobTemplateNodeService        *WorkflowJobTemplateNodeService
 	WorkflowJobTemplateNodeAllwaysService *WorkflowJobTemplateNodeStepService
@@ -123,6 +125,12 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error)
 			client: awxClient,
 		},
 		OrganizationsService: &OrganizationsService{
+			client: awxClient,
+		},
+		SettingService: &SettingService{
+			client: awxClient,
+		},
+		TeamService: &TeamService{
 			client: awxClient,
 		},
 		WorkflowJobTemplateService: &WorkflowJobTemplateService{
