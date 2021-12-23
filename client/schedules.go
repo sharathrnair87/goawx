@@ -53,7 +53,6 @@ func (s *SchedulesService) GetById(id int, params map[string]string) (*Schedule,
 func (s *SchedulesService) Create(data map[string]interface{}, params map[string]string) (*Schedule, error) {
 	mandatoryFields = []string{"name", "rrule", "unified_job_template"}
 	validate, status := ValidateParams(data, mandatoryFields)
-
 	if !status {
 		err := fmt.Errorf("mandatory input arguments are absent: %s", validate)
 		return nil, err
