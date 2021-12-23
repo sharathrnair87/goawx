@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/denouche/goawx/compare/v0.6.0...v0.6.1) (2021-12-23)
+
+
+### Bug Fixes
+
+* add service to client ([e66e698](https://github.com/denouche/goawx/commit/e66e698ab737d913d6b2a58baa28771c796f2117))
+
 # [0.6.0](https://github.com/denouche/goawx/compare/v0.5.1...v0.6.0) (2021-12-23)
 
 
