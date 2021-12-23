@@ -62,8 +62,7 @@ jobs:
           semantic_version: 17.4.7
           branches: |
             [
-              'main',
-              'master'
+              'main'
             ]
           extra_plugins: |
             @semantic-release/commit-analyzer@8.0.1
