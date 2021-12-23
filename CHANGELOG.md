@@ -1,3 +1,10 @@
+## [0.6.2](https://github.com/denouche/goawx/compare/v0.6.1...v0.6.2) (2021-12-23)
+
+
+### Bug Fixes
+
+* unified_job_template is not mandatory for workflow_job_template schedules ([6186119](https://github.com/denouche/goawx/commit/618611919a98ac6dcb0b985d293c12df24c5ba2e))
+
 ## [0.6.1](https://github.com/denouche/goawx/compare/v0.6.0...v0.6.1) (2021-12-23)
 
 
