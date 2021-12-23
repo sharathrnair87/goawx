@@ -819,4 +819,5 @@ type Schedule struct {
 	Rrule              string `json:"rrule"`
 	Enabled            bool   `json:"enabled"`
 	UnifiedJobTemplate int    `json:"unified_job_template"`
+	Inventory          int    `json:"inventory"`
 }
