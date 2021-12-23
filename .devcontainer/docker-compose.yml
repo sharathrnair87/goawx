@@ -4,7 +4,7 @@ services:
   vscode:
     build: .
     volumes:
-      - ../:/go/src/github.com/mrcrilly/goawx
+      - ../:/go/src/github.com/denouche/goawx
       # (only for debug)
       # - ~/repos-ansible/github/plumbing:/go/src/github.com/nolte/plumbing:cached
       - ~/.ssh:/home/vscode/.ssh:ro

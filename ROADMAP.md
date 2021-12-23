@@ -31,7 +31,7 @@
 - [ ] Support AdHocCommands endpoints;
 - [ ] Support SystemJobTemplates endpoints;
 - [ ] Support SystemJobs endpoints;
-- [ ] Support Schedules endpoints;
+- [X] Support Schedules endpoints;
 - [ ] Support Roles endpoints;
 - [ ] Support NotificationTemplates endpoints;
 - [ ] Support Notifications endpoints;

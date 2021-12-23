@@ -811,3 +811,12 @@ type WorkflowJobTemplateNode struct {
 	AllParentsMustConverge bool      `json:"all_parents_must_converge"`
 	Identifier             string    `json:"identifier"`
 }
+
+type Schedule struct {
+	ID                 int    `json:"id"`
+	Name               string `json:"name"`
+	Description        string `json:"description"`
+	Rrule              string `json:"rrule"`
+	Enabled            bool   `json:"enabled"`
+	UnifiedJobTemplate int    `json:"unified_job_template"`
+}

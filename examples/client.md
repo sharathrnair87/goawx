@@ -2,13 +2,13 @@
 
 When using this SDK you're going to need to set up a client and establish a connection to the remote AWX/Tower
 instance. Here's an example of how you might go about doing this:
- 
+
 ```go
 package main
 
 import (
     "log"
-    "github.com/mrcrilly/goawx/client"
+    "github.com/denouche/goawx/client"
 )
 
 func main() {
