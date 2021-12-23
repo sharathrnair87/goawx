@@ -32,10 +32,10 @@ func (jt *WorkflowJobTemplateScheduleService) ListWorkflowJobTemplateSchedules(i
 
 // CreateWorkflowJobTemplateSchedule will create a schedule for an existing workflow_job_template
 func (jt *WorkflowJobTemplateScheduleService) CreateWorkflowJobTemplateSchedule(id int, data map[string]interface{}, params map[string]string) (*Schedule, error) {
-	mandatoryFields = []string{"name", "rrule", "unified_job_template"}
+	mandatoryFields = []string{"name", "rrule"}
 	validate, status := ValidateParams(data, mandatoryFields)
 	if !status {
-		err := fmt.Errorf("Mandatory input arguments are absent: %s", validate)
+		err := fmt.Errorf("mandatory input arguments are absent: %s", validate)
 		return nil, err
 	}
 
