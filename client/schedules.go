@@ -19,7 +19,7 @@ type ListSchedulesResponse struct {
 
 const schedulesAPIEndpoint = "/api/v2/schedules/"
 
-func (s *SchedulesService) SchedulesService(params map[string]string) ([]*Schedule, *ListSchedulesResponse, error) {
+func (s *SchedulesService) List(params map[string]string) ([]*Schedule, *ListSchedulesResponse, error) {
 	result := new(ListSchedulesResponse)
 	resp, err := s.client.Requester.GetJSON(schedulesAPIEndpoint, result, params)
 	if err != nil {
