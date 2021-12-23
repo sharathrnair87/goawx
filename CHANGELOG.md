@@ -1,3 +1,10 @@
+## [0.6.3](https://github.com/denouche/goawx/compare/v0.6.2...v0.6.3) (2021-12-23)
+
+
+### Bug Fixes
+
+* add schedule inventory field ([878b010](https://github.com/denouche/goawx/commit/878b01024ec7e6c03d500bae1e5674cba8b3f964))
+
 ## [0.6.2](https://github.com/denouche/goawx/compare/v0.6.1...v0.6.2) (2021-12-23)
 
 
