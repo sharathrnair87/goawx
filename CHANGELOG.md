@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/denouche/goawx/compare/v0.6.3...v0.7.0) (2022-01-04)
+
+
+### Features
+
+* add notification_templates ([24bff42](https://github.com/denouche/goawx/commit/24bff42c6c5573e17f213422c1bcf170ac2626a9))
+
 ## [0.6.3](https://github.com/denouche/goawx/compare/v0.6.2...v0.6.3) (2021-12-23)
 
 
