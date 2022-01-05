@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/denouche/goawx/compare/v0.7.0...v0.8.0) (2022-01-05)
+
+
+### Features
+
+* add (job_template,workflow_job_template) notification_templates association disassociation ([a5f3828](https://github.com/denouche/goawx/commit/a5f382810811bac8dec0fac20045433a6c9ea7b4))
+
 # [0.7.0](https://github.com/denouche/goawx/compare/v0.6.3...v0.7.0) (2022-01-04)
 
 
