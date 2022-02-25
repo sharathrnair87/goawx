@@ -123,19 +123,19 @@ type ApplyRole struct {
 type ObjectRoles struct {
 	AdhocRole             *ApplyRole `json:"adhoc_role"`
 	AdminRole             *ApplyRole `json:"admin_role"`
-    ApprovalRole          *ApplyRole `json:"approval_role"`
-    AuditorRole           *ApplyRole `json:"auditor_role"`
+	ApprovalRole          *ApplyRole `json:"approval_role"`
+	AuditorRole           *ApplyRole `json:"auditor_role"`
 	CredentialAdminRole   *ApplyRole `json:"credential_admin_role"`
 	ExecuteRole           *ApplyRole `json:"execute_role"`
-    InventoryAdminRole    *ApplyRole `json:"inventory_admin_role"`
-    JobTemplateAdminRole  *ApplyRole `json:"job_template_admin_role"`
-    MemberRole            *ApplyRole `json:"member_role"`
-    NotificationAdminRole *ApplyRole `json:"notification_admin_role"`
-    ProjectAdminRole      *ApplyRole `json:"project_admin_role"`
-    ReadRole              *ApplyRole `json:"read_role"`
-    UpdateRole            *ApplyRole `json:"update_role"`
-    UseRole               *ApplyRole `json:"use_role"`
-    WorkflowAdminRole     *ApplyRole `json:"workflow_admin_role"`
+	InventoryAdminRole    *ApplyRole `json:"inventory_admin_role"`
+	JobTemplateAdminRole  *ApplyRole `json:"job_template_admin_role"`
+	MemberRole            *ApplyRole `json:"member_role"`
+	NotificationAdminRole *ApplyRole `json:"notification_admin_role"`
+	ProjectAdminRole      *ApplyRole `json:"project_admin_role"`
+	ReadRole              *ApplyRole `json:"read_role"`
+	UpdateRole            *ApplyRole `json:"update_role"`
+	UseRole               *ApplyRole `json:"use_role"`
+	WorkflowAdminRole     *ApplyRole `json:"workflow_admin_role"`
 }
 
 // UserCapabilities represents the awx api user capabilities.
