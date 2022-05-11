@@ -1,3 +1,10 @@
+# [0.10.0](https://github.com/denouche/goawx/compare/v0.9.0...v0.10.0) (2022-05-11)
+
+
+### Features
+
+* execution environments ([#4](https://github.com/denouche/goawx/issues/4)) ([91b8780](https://github.com/denouche/goawx/commit/91b8780e8d496b6c8f2467360dd332216276c9df))
+
 # [0.9.0](https://github.com/denouche/goawx/compare/v0.8.0...v0.9.0) (2022-04-20)
 
 
