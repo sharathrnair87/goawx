@@ -1,3 +1,10 @@
+## [0.10.1](https://github.com/denouche/goawx/compare/v0.10.0...v0.10.1) (2022-07-01)
+
+
+### Bug Fixes
+
+* always workflow node type api call ([#6](https://github.com/denouche/goawx/issues/6)) ([17716db](https://github.com/denouche/goawx/commit/17716dbc2b0b042cfd42969f40043f6638db6352))
+
 # [0.10.0](https://github.com/denouche/goawx/compare/v0.9.0...v0.10.0) (2022-05-11)
 
 
