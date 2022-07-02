@@ -13,6 +13,7 @@ var mandatoryFields []string
 type AWX struct {
 	client *Client
 
+	ApplicationService                              *ApplicationService
 	ExecutionEnvironmentsService                    *ExecutionEnvironmentsService
 	PingService                                     *PingService
 	InventoriesService                              *InventoriesService
@@ -123,6 +124,9 @@ func newAWX(c *Client) *AWX {
 	return &AWX{
 		client: c,
 
+		ApplicationService: &ApplicationService{
+			client: awxClient,
+		},
 		ExecutionEnvironmentsService: &ExecutionEnvironmentsService{
 			client: c,
 		},

@@ -16,6 +16,22 @@ type Pagination struct {
 	Previous interface{} `json:"previous"`
 }
 
+type Application struct {
+	Name                   string   `json:"name"`
+	ID                     int      `json:"id"`
+	Type                   string   `json:"type"`
+	URL                    string   `json:"url"`
+	Related                *Related `json:"related"`
+	Description            string   `json:"description"`
+	ClientID               string   `json:"client_id"`
+	ClientSecret           string   `json:"client_secret"`
+	ClientType             string   `json:"client_type"`
+	RedirectURIs           string   `json:"redirect_uris"`
+	AuthorizationGrantType string   `json:"authorization_grant_type"`
+	SkipAuthorization      bool     `json:"skip_authorization"`
+	OrganizationID         int      `json:"organization"`
+}
+
 // ProjectUpdateCancel represents the awx project update cancel api response.
 type ProjectUpdateCancel struct {
 	CanCancel bool `json:"can_cancel"`
