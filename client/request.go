@@ -34,10 +34,27 @@ func NewAPIRequest(method string, endpoint string, payload io.Reader) *APIReques
 	return ar
 }
 
+type Authenticator interface {
+	addAuthenticationHeaders(*http.Request)
+}
+
 // BasicAuth represents http basic auth.
 type BasicAuth struct {
 	Username string
 	Password string
+}
+
+func (ba *BasicAuth) addAuthenticationHeaders(r *http.Request) {
+	r.SetBasicAuth(ba.Username, ba.Password)
+}
+
+// TokenAuth represents token authentication
+type TokenAuth struct {
+	Token string
+}
+
+func (ta *TokenAuth) addAuthenticationHeaders(r *http.Request) {
+	r.Header.Set("Authentication", fmt.Sprintf("Bearer %s", ta.Token))
 }
 
 // Requester implemented a base http client.
@@ -47,9 +64,9 @@ type BasicAuth struct {
 // For production usage, It would be better to wrapper
 // an another rest client on this requester.
 type Requester struct {
-	Base      string
-	BasicAuth *BasicAuth
-	Client    *http.Client
+	Base          string
+	Authenticator Authenticator
+	Client        *http.Client
 }
 
 // Do do the actual http request.
@@ -81,9 +98,7 @@ func (r *Requester) Do(ar *APIRequest, responseStruct interface{}, options ...in
 		return nil, err
 	}
 
-	if r.BasicAuth != nil {
-		req.SetBasicAuth(r.BasicAuth.Username, r.BasicAuth.Password)
-	}
+	r.Authenticator.addAuthenticationHeaders(req)
 
 	for k := range ar.Headers {
 		req.Header.Add(k, ar.Headers.Get(k))

@@ -31,10 +31,13 @@ func (cs *CredentialsService) getAllPages(firstURL string, params map[string]str
 	nextURL := firstURL
 	for {
 		nextURLParsed, err := url.Parse(nextURL)
+		if err != nil {
+			return nil, err
+		}
 
 		nextURLQueryParams := make(map[string]string)
 		for paramName, paramValues := range nextURLParsed.Query() {
-			if paramValues != nil && len(paramValues) > 0 {
+			if len(paramValues) > 0 {
 				nextURLQueryParams[paramName] = paramValues[0]
 			}
 		}
@@ -59,7 +62,6 @@ func (cs *CredentialsService) getAllPages(firstURL string, params map[string]str
 			break
 		}
 		nextURL = result.Next.(string)
-
 	}
 	return results, nil
 }

@@ -33,8 +33,8 @@ func (s *SchedulesService) List(params map[string]string) ([]*Schedule, *ListSch
 	return result.Results, result, nil
 }
 
-// GetById shows the details of a schedule.
-func (s *SchedulesService) GetById(id int, params map[string]string) (*Schedule, error) {
+// GetByID shows the details of a schedule.
+func (s *SchedulesService) GetByID(id int, params map[string]string) (*Schedule, error) {
 	result := new(Schedule)
 	endpoint := fmt.Sprintf("%s%d/", schedulesAPIEndpoint, id)
 	resp, err := s.client.Requester.GetJSON(endpoint, result, params)

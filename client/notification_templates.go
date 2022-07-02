@@ -33,8 +33,8 @@ func (s *NotificationTemplatesService) List(params map[string]string) ([]*Notifi
 	return result.Results, result, nil
 }
 
-// GetById shows the details of a notification_template.
-func (s *NotificationTemplatesService) GetById(id int, params map[string]string) (*NotificationTemplate, error) {
+// GetByID shows the details of a notification_template.
+func (s *NotificationTemplatesService) GetByID(id int, params map[string]string) (*NotificationTemplate, error) {
 	result := new(NotificationTemplate)
 	endpoint := fmt.Sprintf("%s%d/", notificationTemplatesAPIEndpoint, id)
 	resp, err := s.client.Requester.GetJSON(endpoint, result, params)

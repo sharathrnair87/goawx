@@ -15,7 +15,6 @@ type WorkflowJobTemplateNodeStepService struct {
 
 // ListWorkflowJobTemplateNodes shows a list of job templates nodes.
 func (jt *WorkflowJobTemplateNodeStepService) ListWorkflowJobTemplateNodes(id int, params map[string]string) ([]*WorkflowJobTemplateNode, *ListWorkflowJobTemplateNodesResponse, error) {
-
 	workflowJobTemplateNodesActionEndpoint := fmt.Sprintf(jt.endpoint, id)
 	return fetchWorkflowJobTemplateNode(jt.client, params, workflowJobTemplateNodesActionEndpoint)
 }
@@ -55,7 +54,6 @@ func createWorkflowJobTemplateNode(client *Client, data map[string]interface{}, 
 	}
 	log.Printf("Created ID %v", result.ID)
 	return result, nil
-
 }
 
 // CreateWorkflowJobTemplateNodeStep will be create a template node for a existing node

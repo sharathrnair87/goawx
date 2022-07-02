@@ -53,8 +53,8 @@ func (p *TeamService) ListTeamRoleEntitlements(id int, params map[string]string)
 	return result.Results, result, nil
 }
 
-// GetTeamById shows the details of a team.
-func (p *TeamService) GetTeamById(id int, params map[string]string) (*Team, error) {
+// GetTeamByID shows the details of a team.
+func (p *TeamService) GetTeamByID(id int, params map[string]string) (*Team, error) {
 	result := new(Team)
 	endpoint := fmt.Sprintf("%s%d/", teamsAPIEndpoint, id)
 	resp, err := p.client.Requester.GetJSON(endpoint, result, params)

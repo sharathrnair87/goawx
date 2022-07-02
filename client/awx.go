@@ -75,7 +75,7 @@ func ValidateParams(data map[string]interface{}, mandatoryFields []string) (notf
 // NewAWX news an awx handler with basic auth support, you could customize the http
 // transport by passing custom client.
 func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error) {
-	r := &Requester{Base: baseURL, BasicAuth: &BasicAuth{Username: userName, Password: passwd}, Client: client}
+	r := &Requester{Base: baseURL, Authenticator: &BasicAuth{Username: userName, Password: passwd}, Client: client}
 	if r.Client == nil {
 		r.Client = http.DefaultClient
 	}
@@ -85,97 +85,7 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error)
 		Requester: r,
 	}
 
-	newAWX := &AWX{
-		client: awxClient,
-
-		ExecutionEnvironmentsService: &ExecutionEnvironmentsService{
-			client: awxClient,
-		},
-		PingService: &PingService{
-			client: awxClient,
-		},
-		InventoriesService: &InventoriesService{
-			client: awxClient,
-		},
-		JobService: &JobService{
-			client: awxClient,
-		},
-		JobTemplateService: &JobTemplateService{
-			client: awxClient,
-		},
-		JobTemplateNotificationTemplatesService: &JobTemplateNotificationTemplatesService{
-			client: awxClient,
-		},
-		ProjectService: &ProjectService{
-			client: awxClient,
-		},
-		ProjectUpdatesService: &ProjectUpdatesService{
-			client: awxClient,
-		},
-		UserService: &UserService{
-			client: awxClient,
-		},
-		GroupService: &GroupService{
-			client: awxClient,
-		},
-		HostService: &HostService{
-			client: awxClient,
-		},
-		CredentialsService: &CredentialsService{
-			client: awxClient,
-		},
-		CredentialTypeService: &CredentialTypeService{
-			client: awxClient,
-		},
-		CredentialInputSourceService: &CredentialInputSourceService{
-			client: awxClient,
-		},
-		InventorySourcesService: &InventorySourcesService{
-			client: awxClient,
-		},
-		InventoryGroupService: &InventoryGroupService{
-			client: awxClient,
-		},
-		NotificationTemplatesService: &NotificationTemplatesService{
-			client: awxClient,
-		},
-		OrganizationsService: &OrganizationsService{
-			client: awxClient,
-		},
-		ScheduleService: &SchedulesService{
-			client: awxClient,
-		},
-		SettingService: &SettingService{
-			client: awxClient,
-		},
-		TeamService: &TeamService{
-			client: awxClient,
-		},
-		WorkflowJobTemplateScheduleService: &WorkflowJobTemplateScheduleService{
-			client: awxClient,
-		},
-		WorkflowJobTemplateService: &WorkflowJobTemplateService{
-			client: awxClient,
-		},
-		WorkflowJobTemplateNodeService: &WorkflowJobTemplateNodeService{
-			client: awxClient,
-		},
-		WorkflowJobTemplateNodeSuccessService: &WorkflowJobTemplateNodeStepService{
-			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/success_nodes/"),
-			client:   awxClient,
-		},
-		WorkflowJobTemplateNodeFailureService: &WorkflowJobTemplateNodeStepService{
-			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/failure_nodes/"),
-			client:   awxClient,
-		},
-		WorkflowJobTemplateNodeAlwaysService: &WorkflowJobTemplateNodeStepService{
-			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/always_nodes/"),
-			client:   awxClient,
-		},
-		WorkflowJobTemplateNotificationTemplatesService: &WorkflowJobTemplateNotificationTemplatesService{
-			client: awxClient,
-		},
-	}
+	newAWX := newAWX(awxClient)
 
 	// test the connection and return and error if there's an issue
 	_, err := newAWX.PingService.Ping()
@@ -184,4 +94,121 @@ func NewAWX(baseURL, userName, passwd string, client *http.Client) (*AWX, error)
 	}
 
 	return newAWX, nil
+}
+
+// NewAWXToken creates an AWX handler with token support.
+func NewAWXToken(baseURL, token string, client *http.Client) (*AWX, error) {
+	r := &Requester{Base: baseURL, Authenticator: &TokenAuth{Token: token}, Client: client}
+	if r.Client == nil {
+		r.Client = http.DefaultClient
+	}
+
+	awxClient := &Client{
+		BaseURL:   baseURL,
+		Requester: r,
+	}
+
+	newAWX := newAWX(awxClient)
+
+	// test the connection and return and error if there's an issue
+	_, err := newAWX.PingService.Ping()
+	if err != nil {
+		return nil, err
+	}
+
+	return newAWX, nil
+}
+
+func newAWX(c *Client) *AWX {
+	return &AWX{
+		client: c,
+
+		ExecutionEnvironmentsService: &ExecutionEnvironmentsService{
+			client: c,
+		},
+		PingService: &PingService{
+			client: c,
+		},
+		InventoriesService: &InventoriesService{
+			client: c,
+		},
+		JobService: &JobService{
+			client: c,
+		},
+		JobTemplateService: &JobTemplateService{
+			client: c,
+		},
+		JobTemplateNotificationTemplatesService: &JobTemplateNotificationTemplatesService{
+			client: c,
+		},
+		ProjectService: &ProjectService{
+			client: c,
+		},
+		ProjectUpdatesService: &ProjectUpdatesService{
+			client: c,
+		},
+		UserService: &UserService{
+			client: c,
+		},
+		GroupService: &GroupService{
+			client: c,
+		},
+		HostService: &HostService{
+			client: c,
+		},
+		CredentialsService: &CredentialsService{
+			client: c,
+		},
+		CredentialTypeService: &CredentialTypeService{
+			client: c,
+		},
+		CredentialInputSourceService: &CredentialInputSourceService{
+			client: c,
+		},
+		InventorySourcesService: &InventorySourcesService{
+			client: c,
+		},
+		InventoryGroupService: &InventoryGroupService{
+			client: c,
+		},
+		NotificationTemplatesService: &NotificationTemplatesService{
+			client: c,
+		},
+		OrganizationsService: &OrganizationsService{
+			client: c,
+		},
+		ScheduleService: &SchedulesService{
+			client: c,
+		},
+		SettingService: &SettingService{
+			client: c,
+		},
+		TeamService: &TeamService{
+			client: c,
+		},
+		WorkflowJobTemplateScheduleService: &WorkflowJobTemplateScheduleService{
+			client: c,
+		},
+		WorkflowJobTemplateService: &WorkflowJobTemplateService{
+			client: c,
+		},
+		WorkflowJobTemplateNodeService: &WorkflowJobTemplateNodeService{
+			client: c,
+		},
+		WorkflowJobTemplateNodeSuccessService: &WorkflowJobTemplateNodeStepService{
+			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/success_nodes/"),
+			client:   c,
+		},
+		WorkflowJobTemplateNodeFailureService: &WorkflowJobTemplateNodeStepService{
+			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/failure_nodes/"),
+			client:   c,
+		},
+		WorkflowJobTemplateNodeAlwaysService: &WorkflowJobTemplateNodeStepService{
+			endpoint: fmt.Sprintf("%s%s", workflowJobTemplateNodeAPIEndpoint, "%d/always_nodes/"),
+			client:   c,
+		},
+		WorkflowJobTemplateNotificationTemplatesService: &WorkflowJobTemplateNotificationTemplatesService{
+			client: c,
+		},
+	}
 }

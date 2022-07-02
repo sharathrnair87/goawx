@@ -34,8 +34,8 @@ func (p *ProjectService) ListProjects(params map[string]string) ([]*Project, *Li
 	return result.Results, result, nil
 }
 
-// GetProjectById shows the details of a project.
-func (p *ProjectService) GetProjectById(id int, params map[string]string) (*Project, error) {
+// GetProjectByID shows the details of a project.
+func (p *ProjectService) GetProjectByID(id int, params map[string]string) (*Project, error) {
 	result := new(Project)
 	endpoint := fmt.Sprintf("%s%d/", projectsAPIEndpoint, id)
 	resp, err := p.client.Requester.GetJSON(endpoint, result, params)

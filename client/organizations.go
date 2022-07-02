@@ -34,10 +34,13 @@ func (p *OrganizationsService) getAllPages(firstURL string, params map[string]st
 	nextURL := firstURL
 	for {
 		nextURLParsed, err := url.Parse(nextURL)
+		if err != nil {
+			return nil, err
+		}
 
 		nextURLQueryParams := make(map[string]string)
 		for paramName, paramValues := range nextURLParsed.Query() {
-			if paramValues != nil && len(paramValues) > 0 {
+			if len(paramValues) > 0 {
 				nextURLQueryParams[paramName] = paramValues[0]
 			}
 		}
@@ -62,7 +65,6 @@ func (p *OrganizationsService) getAllPages(firstURL string, params map[string]st
 			break
 		}
 		nextURL = result.Next.(string)
-
 	}
 	return results, nil
 }
