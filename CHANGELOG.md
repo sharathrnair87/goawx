@@ -1,3 +1,10 @@
+# [0.13.0](https://github.com/denouche/goawx/compare/v0.12.0...v0.13.0) (2022-07-22)
+
+
+### Features
+
+* **Application:** Added application API suport ([7f173e8](https://github.com/denouche/goawx/commit/7f173e8e4c2f05845c5589ce99bf938a7805bf89))
+
 # [0.12.0](https://github.com/denouche/goawx/compare/v0.11.0...v0.12.0) (2022-07-22)
 
 
