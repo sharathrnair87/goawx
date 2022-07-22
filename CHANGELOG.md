@@ -1,3 +1,10 @@
+# [0.11.0](https://github.com/denouche/goawx/compare/v0.10.1...v0.11.0) (2022-07-22)
+
+
+### Features
+
+* Complete ObjectRoles map ([9eb69d9](https://github.com/denouche/goawx/commit/9eb69d942d1d55d9d7e80967119809cf6cb0b482))
+
 ## [0.10.1](https://github.com/denouche/goawx/compare/v0.10.0...v0.10.1) (2022-07-01)
 
 
