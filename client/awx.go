@@ -125,7 +125,7 @@ func newAWX(c *Client) *AWX {
 		client: c,
 
 		ApplicationService: &ApplicationService{
-			client: awxClient,
+			client: c,
 		},
 		ExecutionEnvironmentsService: &ExecutionEnvironmentsService{
 			client: c,
