@@ -1,3 +1,10 @@
+# [0.12.0](https://github.com/denouche/goawx/compare/v0.11.0...v0.12.0) (2022-07-22)
+
+
+### Features
+
+* **Authentication:** Added ability to construct a token based AWX authentication experience ([60c73f4](https://github.com/denouche/goawx/commit/60c73f4855bd7aebe2bd5565905fa1c1ce4ff937))
+
 # [0.11.0](https://github.com/denouche/goawx/compare/v0.10.1...v0.11.0) (2022-07-22)
 
 
