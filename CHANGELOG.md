@@ -1,3 +1,10 @@
+# [0.14.0](https://github.com/denouche/goawx/compare/v0.13.1...v0.14.0) (2022-10-24)
+
+
+### Features
+
+* manage for instance groups ([#14](https://github.com/denouche/goawx/issues/14)) ([d03a5b5](https://github.com/denouche/goawx/commit/d03a5b5792b55056b0fe2e9be44b9e4f511c251c))
+
 ## [0.13.1](https://github.com/denouche/goawx/compare/v0.13.0...v0.13.1) (2022-07-22)
 
 
