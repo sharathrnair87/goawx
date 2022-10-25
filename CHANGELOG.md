@@ -1,3 +1,10 @@
+## [0.14.1](https://github.com/denouche/goawx/compare/v0.14.0...v0.14.1) (2022-10-25)
+
+
+### Bug Fixes
+
+* bad authorization header for tokens [#15](https://github.com/denouche/goawx/issues/15) ([#16](https://github.com/denouche/goawx/issues/16)) ([49d273e](https://github.com/denouche/goawx/commit/49d273e4b9dedd877eba9c526ac0e8c06b9839d4))
+
 # [0.14.0](https://github.com/denouche/goawx/compare/v0.13.1...v0.14.0) (2022-10-24)
 
 
