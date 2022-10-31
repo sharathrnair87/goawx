@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/denouche/goawx/compare/v0.14.1...v0.15.0) (2022-10-31)
+
+
+### Features
+
+* feeds team resource ([#17](https://github.com/denouche/goawx/issues/17)) ([d7fd4ca](https://github.com/denouche/goawx/commit/d7fd4ca550c03449c5db4d147ff93880639d7442))
+
 ## [0.14.1](https://github.com/denouche/goawx/compare/v0.14.0...v0.14.1) (2022-10-25)
 
 
