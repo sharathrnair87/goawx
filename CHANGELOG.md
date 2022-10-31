@@ -1,3 +1,10 @@
+# [0.17.0](https://github.com/denouche/goawx/compare/v0.16.0...v0.17.0) (2022-10-31)
+
+
+### Features
+
+* manage organization Galaxy credentials ([#20](https://github.com/denouche/goawx/issues/20)) ([e45fbfe](https://github.com/denouche/goawx/commit/e45fbfe3cdb6ccabcb071b2a3a7393c9f671cdda))
+
 # [0.16.0](https://github.com/denouche/goawx/compare/v0.15.0...v0.16.0) (2022-10-31)
 
 
