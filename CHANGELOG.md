@@ -1,3 +1,10 @@
+# [0.16.0](https://github.com/denouche/goawx/compare/v0.15.0...v0.16.0) (2022-10-31)
+
+
+### Features
+
+* user roles ([#18](https://github.com/denouche/goawx/issues/18)) ([4bef306](https://github.com/denouche/goawx/commit/4bef306525626c7e82128dc73dcf092d5198be29))
+
 # [0.15.0](https://github.com/denouche/goawx/compare/v0.14.1...v0.15.0) (2022-10-31)
 
 
