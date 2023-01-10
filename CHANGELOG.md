@@ -1,3 +1,15 @@
+# [0.18.0](https://github.com/denouche/goawx/compare/v0.17.0...v0.18.0) (2023-01-10)
+
+
+### Bug Fixes
+
+* remove check not present return parameter ([c1c8f45](https://github.com/denouche/goawx/commit/c1c8f453b3cc2a5818082fcdf852560345bd2571))
+
+
+### Features
+
+* launch workflow job template ([fd0a966](https://github.com/denouche/goawx/commit/fd0a9665f5ca16a30b340153c83af505855c4ec9))
+
 # [0.17.0](https://github.com/denouche/goawx/compare/v0.16.0...v0.17.0) (2022-10-31)
 
 
