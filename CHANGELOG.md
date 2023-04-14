@@ -1,3 +1,10 @@
+## [0.18.1](https://github.com/denouche/goawx/compare/v0.18.0...v0.18.1) (2023-04-14)
+
+
+### Bug Fixes
+
+* import schedule type with extra_data ([#27](https://github.com/denouche/goawx/issues/27)) ([7fef8a9](https://github.com/denouche/goawx/commit/7fef8a983d4c8a1ecd59370238032d9d2885611c))
+
 # [0.18.0](https://github.com/denouche/goawx/compare/v0.17.0...v0.18.0) (2023-01-10)
 
 
