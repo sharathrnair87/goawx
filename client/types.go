@@ -288,7 +288,7 @@ type Credential struct {
 	OrganizationID   int                    `json:"organization"`
 	CredentialTypeID int                    `json:"credential_type_id"`
 	Inputs           map[string]interface{} `json:"inputs"`
-	SummaryFields    map[string]interface{} `json:"summary_fields"`
+	SummaryFields    *Summary               `json:"summary_fields"`
 }
 
 type CredentialType struct {
