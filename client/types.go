@@ -142,11 +142,17 @@ type InstanceGroupSummary struct {
 	Description string `json:"description"`
 }
 
+type ApplyRoleSummary struct {
+	ResourceName string `json:"resource_name"`
+	ResourceType string `json:"resource_type"`
+}
+
 // ApplyRole represents the awx api apply role.
 type ApplyRole struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
+	ID          int              `json:"id"`
+	Name        string           `json:"name"`
+	Description string           `json:"description"`
+	Summary     ApplyRoleSummary `json:"summary_fields"`
 }
 
 // ObjectRoles represents the awx api object roles.
