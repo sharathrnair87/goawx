@@ -251,6 +251,38 @@ type Project struct {
 	LastUpdated           time.Time `json:"last_updated"`
 }
 
+// Project represents the awx api project, with nullable Credential field
+type ProjectRead struct {
+	ID                    int       `json:"id"`
+	Type                  string    `json:"type"`
+	URL                   string    `json:"url"`
+	Related               *Related  `json:"related"`
+	SummaryFields         *Summary  `json:"summary_fields"`
+	Created               time.Time `json:"created"`
+	Modified              time.Time `json:"modified"`
+	Name                  string    `json:"name"`
+	Description           string    `json:"description"`
+	LocalPath             string    `json:"local_path"`
+	ScmType               string    `json:"scm_type"`
+	ScmURL                string    `json:"scm_url"`
+	ScmBranch             string    `json:"scm_branch"`
+	ScmClean              bool      `json:"scm_clean"`
+	ScmDeleteOnUpdate     bool      `json:"scm_delete_on_update"`
+	Credential            int    `json:"credential"`
+	Timeout               int       `json:"timeout"`
+	LastJobRun            time.Time `json:"last_job_run"`
+	LastJobFailed         bool      `json:"last_job_failed"`
+	NextJobRun            time.Time `json:"next_job_run"`
+	Status                string    `json:"status"`
+	Organization          int       `json:"organization"`
+	ScmDeleteOnNextUpdate bool      `json:"scm_delete_on_next_update"`
+	ScmUpdateOnLaunch     bool      `json:"scm_update_on_launch"`
+	ScmUpdateCacheTimeout int       `json:"scm_update_cache_timeout"`
+	ScmRevision           string    `json:"scm_revision"`
+	LastUpdateFailed      bool      `json:"last_update_failed"`
+	LastUpdated           time.Time `json:"last_updated"`
+}
+
 // Inventory represents the awx api inventory.
 type Inventory struct {
 	ID                           int         `json:"id"`
