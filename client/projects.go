@@ -14,13 +14,13 @@ type ProjectService struct {
 // ListProjectsResponse represents `ListProjects` endpoint response.
 type ListProjectsResponse struct {
 	Pagination
-	Results []*Project `json:"results"`
+	Results []*ProjectRead `json:"results"`
 }
 
 const projectsAPIEndpoint = "/api/v2/projects/"
 
 // ListProjects shows list of awx projects.
-func (p *ProjectService) ListProjects(params map[string]string) ([]*Project, *ListProjectsResponse, error) {
+func (p *ProjectService) ListProjects(params map[string]string) ([]*ProjectRead, *ListProjectsResponse, error) {
 	result := new(ListProjectsResponse)
 	resp, err := p.client.Requester.GetJSON(projectsAPIEndpoint, result, params)
 	if err != nil {
@@ -35,8 +35,8 @@ func (p *ProjectService) ListProjects(params map[string]string) ([]*Project, *Li
 }
 
 // GetProjectByID shows the details of a project.
-func (p *ProjectService) GetProjectByID(id int, params map[string]string) (*Project, error) {
-	result := new(Project)
+func (p *ProjectService) GetProjectByID(id int, params map[string]string) (*ProjectRead, error) {
+	result := new(ProjectRead)
 	endpoint := fmt.Sprintf("%s%d/", projectsAPIEndpoint, id)
 	resp, err := p.client.Requester.GetJSON(endpoint, result, params)
 	if err != nil {
