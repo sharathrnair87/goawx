@@ -69,6 +69,15 @@ func (cs *CredentialTypeService) GetCredentialTypeByID(id int, params map[string
 	return result, nil
 }
 
+func (cs *CredentialTypeService) GetCredentialTypeByName(params map[string]string) ([]*CredentialType, error) {
+	result, _, err := cs.ListCredentialTypes(params)
+	if err != nil {
+		return nil, err
+	}
+
+	return result, nil
+}
+
 func (cs *CredentialTypeService) UpdateCredentialTypeByID(id int, data map[string]interface{}, params map[string]string) (*CredentialType, error) {
 	result := new(CredentialType)
 	endpoint := fmt.Sprintf("%s%d", credentialTypesAPIEndpoint, id)
