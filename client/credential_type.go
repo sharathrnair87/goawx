@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"net/url"
 )
 
 type CredentialTypeService struct {
@@ -17,20 +18,13 @@ type ListCredentialTypeResponse struct {
 
 const credentialTypesAPIEndpoint = "/api/v2/credential_types/"
 
-func (cs *CredentialTypeService) ListCredentialTypes(params map[string]string) ([]*CredentialType,
-	*ListCredentialTypeResponse, error) {
-	result := new(ListCredentialTypeResponse)
-	resp, err := cs.client.Requester.GetJSON(credentialTypesAPIEndpoint, result, params)
+func (cs *CredentialTypeService) ListCredentialTypes(params map[string]string) ([]*CredentialType, error) {
+	results, err := cs.getAllCredentialTypes(credentialTypesAPIEndpoint, params)
 	if err != nil {
-		return nil, result, err
+		return nil, err
 	}
 
-	err = CheckResponse(resp)
-	if err != nil {
-		return nil, result, err
-	}
-
-	return result.Results, result, nil
+	return results, nil
 }
 
 func (cs *CredentialTypeService) CreateCredentialType(data map[string]interface{}, params map[string]string) (*CredentialType, error) {
@@ -113,4 +107,45 @@ func (cs *CredentialTypeService) DeleteCredentialTypeByID(id int, params map[str
 	}
 
 	return nil
+}
+
+// make generic function
+func (cs *CredentialTypeService) getAllCredentialTypes(firstURL string, params map[string]string) ([]*CredentialType, error) {
+	results := make([]*CredentialType, 0)
+	nextURL := firstURL
+	for {
+		nextURLParsed, err := url.Parse(nextURL)
+		if err != nil {
+			return nil, err
+		}
+
+		nextURLQueryParams := make(map[string]string)
+		for paramName, paramValues := range nextURLParsed.Query() {
+			if len(paramValues) > 0 {
+				nextURLQueryParams[paramName] = paramValues[0]
+			}
+		}
+
+		for paramName, paramValue := range params {
+			nextURLQueryParams[paramName] = paramValue
+		}
+
+		result := new(ListCredentialTypeResponse)
+		resp, err := cs.client.Requester.GetJSON(nextURLParsed.Path, result, nextURLQueryParams)
+		if err != nil {
+			return nil, err
+		}
+
+		if err := CheckResponse(resp); err != nil {
+			return nil, err
+		}
+
+		results = append(results, result.Results...)
+
+		if result.Next == nil || result.Next.(string) == "" {
+			break
+		}
+		nextURL = result.Next.(string)
+	}
+	return results, nil
 }
