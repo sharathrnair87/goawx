@@ -64,7 +64,7 @@ func (cs *CredentialTypeService) GetCredentialTypeByID(id int, params map[string
 }
 
 func (cs *CredentialTypeService) GetCredentialTypeByName(params map[string]string) ([]*CredentialType, error) {
-	result, _, err := cs.ListCredentialTypes(params)
+	result, err := cs.ListCredentialTypes(params)
 	if err != nil {
 		return nil, err
 	}
