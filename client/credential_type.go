@@ -16,10 +16,10 @@ type ListCredentialTypeResponse struct {
 	Results []*CredentialType `json:"results"`
 }
 
-const credentialTypesAPIEndpoint = "/api/v2/credential_types/"
+const CredentialTypesAPIEndpoint = "/api/v2/credential_types/"
 
 func (cs *CredentialTypeService) ListCredentialTypes(params map[string]string) ([]*CredentialType, error) {
-	results, err := cs.getAllCredentialTypes(credentialTypesAPIEndpoint, params)
+	results, err := cs.getAllCredentialTypes(CredentialTypesAPIEndpoint, params)
 	if err != nil {
 		return nil, err
 	}
@@ -34,7 +34,7 @@ func (cs *CredentialTypeService) CreateCredentialType(data map[string]interface{
 		return nil, err
 	}
 
-	resp, err := cs.client.Requester.PostJSON(credentialTypesAPIEndpoint, bytes.NewReader(payload), result, params)
+	resp, err := cs.client.Requester.PostJSON(CredentialTypesAPIEndpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
@@ -49,7 +49,7 @@ func (cs *CredentialTypeService) CreateCredentialType(data map[string]interface{
 
 func (cs *CredentialTypeService) GetCredentialTypeByID(id int, params map[string]string) (*CredentialType, error) {
 	result := new(CredentialType)
-	endpoint := fmt.Sprintf("%s%d", credentialTypesAPIEndpoint, id)
+	endpoint := fmt.Sprintf("%s%d", CredentialTypesAPIEndpoint, id)
 	resp, err := cs.client.Requester.GetJSON(endpoint, result, params)
 	if err != nil {
 		return nil, err
@@ -74,7 +74,7 @@ func (cs *CredentialTypeService) GetCredentialTypeByName(params map[string]strin
 
 func (cs *CredentialTypeService) UpdateCredentialTypeByID(id int, data map[string]interface{}, params map[string]string) (*CredentialType, error) {
 	result := new(CredentialType)
-	endpoint := fmt.Sprintf("%s%d", credentialTypesAPIEndpoint, id)
+	endpoint := fmt.Sprintf("%s%d", CredentialTypesAPIEndpoint, id)
 
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -95,7 +95,7 @@ func (cs *CredentialTypeService) UpdateCredentialTypeByID(id int, data map[strin
 }
 
 func (cs *CredentialTypeService) DeleteCredentialTypeByID(id int, params map[string]string) error {
-	endpoint := fmt.Sprintf("%s%d", credentialTypesAPIEndpoint, id)
+	endpoint := fmt.Sprintf("%s%d", CredentialTypesAPIEndpoint, id)
 	resp, err := cs.client.Requester.Delete(endpoint, nil, params)
 	if err != nil {
 		return err
