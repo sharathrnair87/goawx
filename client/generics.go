@@ -16,7 +16,7 @@ type ResourceService struct {
 	client *Client
 }
 
-func GetAllPages[T any](client *Client, firstURL string, params map[string]string) ([]*T, error) {
+func GetAllPages[T any](awx *AWX, firstURL string, params map[string]string) ([]*T, error) {
 	results := make([]*T, 0)
 	nextURL := firstURL
 	for {
@@ -37,7 +37,7 @@ func GetAllPages[T any](client *Client, firstURL string, params map[string]strin
 		}
 
 		result := new(ListResourceResponse[T])
-		resp, err := client.Requester.GetJSON(nextURLParsed.Path, result, nextURLQueryParams)
+		resp, err := awx.client.Requester.GetJSON(nextURLParsed.Path, result, nextURLQueryParams)
 		if err != nil {
 			return nil, err
 		}
