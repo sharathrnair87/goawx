@@ -16,10 +16,10 @@ type ListCredentialsResponse struct {
 	Results []*Credential `json:"results"`
 }
 
-const credentialsAPIEndpoint = "/api/v2/credentials/"
+const CredentialsAPIEndpoint = "/api/v2/credentials/"
 
 func (cs *CredentialsService) ListCredentials(params map[string]string) ([]*Credential, error) {
-	results, err := cs.getAllPages(credentialsAPIEndpoint, params)
+	results, err := cs.getAllPages(CredentialsAPIEndpoint, params)
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func (cs *CredentialsService) CreateCredentials(data map[string]interface{}, par
 		return nil, err
 	}
 
-	resp, err := cs.client.Requester.PostJSON(credentialsAPIEndpoint, bytes.NewReader(payload), result, params)
+	resp, err := cs.client.Requester.PostJSON(CredentialsAPIEndpoint, bytes.NewReader(payload), result, params)
 	if err != nil {
 		return nil, err
 	}
@@ -88,7 +88,7 @@ func (cs *CredentialsService) CreateCredentials(data map[string]interface{}, par
 
 func (cs *CredentialsService) GetCredentialsByID(id int, params map[string]string) (*Credential, error) {
 	result := new(Credential)
-	endpoint := fmt.Sprintf("%s%d", credentialsAPIEndpoint, id)
+	endpoint := fmt.Sprintf("%s%d", CredentialsAPIEndpoint, id)
 	resp, err := cs.client.Requester.GetJSON(endpoint, result, params)
 	if err != nil {
 		return nil, err
@@ -105,7 +105,7 @@ func (cs *CredentialsService) GetCredentialsByID(id int, params map[string]strin
 func (cs *CredentialsService) UpdateCredentialsByID(id int, data map[string]interface{},
 	params map[string]string) (*Credential, error) {
 	result := new(Credential)
-	endpoint := fmt.Sprintf("%s%d", credentialsAPIEndpoint, id)
+	endpoint := fmt.Sprintf("%s%d", CredentialsAPIEndpoint, id)
 
 	payload, err := json.Marshal(data)
 	if err != nil {
@@ -126,7 +126,7 @@ func (cs *CredentialsService) UpdateCredentialsByID(id int, data map[string]inte
 }
 
 func (cs *CredentialsService) DeleteCredentialsByID(id int, params map[string]string) error {
-	endpoint := fmt.Sprintf("%s%d", credentialsAPIEndpoint, id)
+	endpoint := fmt.Sprintf("%s%d", CredentialsAPIEndpoint, id)
 	resp, err := cs.client.Requester.Delete(endpoint, nil, params)
 	if err != nil {
 		return err
