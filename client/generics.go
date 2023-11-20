@@ -1,19 +1,12 @@
 package awx
 
 import (
-	//"bytes"
-	//"encoding/json"
-	//"fmt"
 	"net/url"
 )
 
 type ListResourceResponse[T any] struct {
 	Pagination
 	Results []*T `json:"results"`
-}
-
-type ResourceService struct {
-	client *Client
 }
 
 func GetAllPages[T any](awx *AWX, firstURL string, params map[string]string) ([]*T, error) {
