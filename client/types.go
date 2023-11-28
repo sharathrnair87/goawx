@@ -252,6 +252,7 @@ type Project struct {
 	ScmDeleteOnNextUpdate bool      `json:"scm_delete_on_next_update"`
 	ScmUpdateOnLaunch     bool      `json:"scm_update_on_launch"`
 	ScmUpdateCacheTimeout int       `json:"scm_update_cache_timeout"`
+	AllowOverride         bool      `json:"allow_override"`
 	ScmRevision           string    `json:"scm_revision"`
 	LastUpdateFailed      bool      `json:"last_update_failed"`
 	LastUpdated           time.Time `json:"last_updated"`
@@ -284,6 +285,7 @@ type ProjectRead struct {
 	ScmDeleteOnNextUpdate bool      `json:"scm_delete_on_next_update"`
 	ScmUpdateOnLaunch     bool      `json:"scm_update_on_launch"`
 	ScmUpdateCacheTimeout int       `json:"scm_update_cache_timeout"`
+	AllowOverride         bool      `json:"allow_override"`
 	ScmRevision           string    `json:"scm_revision"`
 	LastUpdateFailed      bool      `json:"last_update_failed"`
 	LastUpdated           time.Time `json:"last_updated"`
@@ -412,6 +414,7 @@ type JobTemplate struct {
 	Project               int         `json:"project"`
 	Playbook              string      `json:"playbook"`
 	Forks                 int         `json:"forks"`
+	JobSliceCount         int         `json:"job_slice_count"`
 	Limit                 string      `json:"limit"`
 	Verbosity             int         `json:"verbosity"`
 	ExtraVars             string      `json:"extra_vars"`
