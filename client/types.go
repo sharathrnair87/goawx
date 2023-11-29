@@ -771,17 +771,18 @@ type Host struct {
 }
 
 type Organization struct {
-	Created          time.Time `json:"created"`
-	CustomVirtualenv string    `json:"custom_virtualenv"`
-	Description      string    `json:"description"`
-	ID               int       `json:"id"`
-	MaxHosts         int       `json:"max_hosts"`
-	Modified         time.Time `json:"modified"`
-	Name             string    `json:"name"`
-	Related          *Related  `json:"related"`
-	SummaryFields    *Summary  `json:"summary_fields"`
-	Type             string    `json:"type"`
-	URL              string    `json:"url"`
+	Created            time.Time `json:"created"`
+	CustomVirtualenv   string    `json:"custom_virtualenv"`
+	Description        string    `json:"description"`
+	ID                 int       `json:"id"`
+	MaxHosts           int       `json:"max_hosts"`
+	Modified           time.Time `json:"modified"`
+	Name               string    `json:"name"`
+	Related            *Related  `json:"related"`
+	SummaryFields      *Summary  `json:"summary_fields"`
+	Type               string    `json:"type"`
+	URL                string    `json:"url"`
+	DefaultEnvironemnt string    `json:"default_environment"`
 }
 
 type SettingSummary struct {
