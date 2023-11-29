@@ -782,7 +782,7 @@ type Organization struct {
 	SummaryFields      *Summary  `json:"summary_fields"`
 	Type               string    `json:"type"`
 	URL                string    `json:"url"`
-	DefaultEnvironemnt string    `json:"default_environment"`
+	DefaultEnvironment string    `json:"default_environment"`
 }
 
 type SettingSummary struct {
