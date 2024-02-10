@@ -103,6 +103,7 @@ type Related struct {
 	AnsibleFacts                 string `json:"ansible_facts"`
 	ExecutionEnvironment         string `json:"execution_environment"`
 	ExecutionEnvironments        string `json:"execution_environments"`
+	User                         string `json:"user"`
 }
 
 // InstanceGroupSummary represents the awx api instance group summary fields.
@@ -944,4 +945,34 @@ type ExecutionEnvironment struct {
 	Managed       bool      `json:"managed"`
 	Credential    int       `json:"credential"`
 	Pull          string    `json:"pull"`
+}
+
+type TokenType string
+
+const (
+	TokenTypeOauth2 TokenType = "o_auth2_access_token"
+	TokenTypeAccess TokenType = "Access Token"
+)
+
+type TokenScope string
+
+const (
+	TokenScopeRead  TokenScope = "read"
+	TokenScopeWrite TokenScope = "write"
+)
+
+type Token struct {
+	ID            int                    `json:"id"`
+	Type          TokenType              `json:"type"`
+	URL           string                 `json:"url"`
+	Related       *Related               `json:"related"`
+	SummaryFields map[string]interface{} `json:"summary_fields"`
+	Created       time.Time              `json:"created"`
+	Modified      time.Time              `json:"modified"`
+	Description   string                 `json:"description"`
+	Token         string                 `json:"token"`
+	RefreshToken  string                 `json:"refresh_token"`
+	Application   string                 `json:"application"`
+	Expires       time.Time              `json:"expires"`
+	Scope         TokenScope             `json:"scope"`
 }
